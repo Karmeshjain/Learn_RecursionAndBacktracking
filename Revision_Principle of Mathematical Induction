@@ -1,0 +1,50 @@
+Principle of Mathematical Induction Solution and Proof
+Consider a statement P(n), where n is a natural number. Then to determine the validity of P(n) for every n, use the following principle:
+
+Step 1:  Check whether the given statement is true for n = 1.
+
+Step 2: Assume that given statement P(n) is also true for n = k, where k is any positive integer.
+
+Step 3:  Prove that the result is true for P(k+1) for any positive integer k.
+
+If the above-mentioned conditions are satisfied, then it can be concluded that P(n) is true for all n natural numbers.
+
+Proof:
+The first step of the principle is a factual statement and the second step is a conditional one. According to this if the given statement is true for some positive integer k only then it can be concluded that the statement P(n) is valid for n = k + 1.
+
+This is also known as the inductive step and the assumption that P(n) is true for n=k is known as the inductive hypothesis.
+
+Solved problems
+Example 1: Prove that the sum of cubes of n natural numbers is equal to ( n(n+1)2)2 for all n natural numbers.
+
+Solution:
+
+In the given statement we are asked to prove:
+
+13+23+33+⋯+n3 = (n(n+1)2)2
+
+Step 1: Now with the help of the principle of induction in math let us check the validity of the given statement P(n) for n=1.
+
+P(1)=(1(1+1)2)2 = 1 This is true.
+
+Step 2: Now as the given statement is true for n=1 we shall move forward and try proving this for n=k, i.e.,
+
+13+23+33+⋯+k3= (k(k+1)2)2 .
+
+Step 3: Let us now try to establish that P(k+1) is also true.
+
+                  13+23+33+⋯+k3+(k+1)3 = (k(k+1)2)2+(k+1)3
+
+                 ⇒13+23+33+⋯+k3+(k+1)3=k2(k+1)4+(k+1)3
+
+                 = k2(k+1)2+4((k+1)3)4
+
+                 =(k+1)2(k2+4(k+1))4
+
+                 =(k+1)2(k2+4k+4)4
+
+                 = (k+1)2((k+2)2)4
+
+                 =(k+1)2(k+1+1)2)4
+
+                 =(k+1)2((k+1)+1)2)4
