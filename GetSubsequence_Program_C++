@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<string> fun(string str,int idx)
+{
+	if(idx==str.size())
+	{
+		return {""};
+	}
+	vector<string> temp=fun(str,idx+1);
+	vector<string> ans;
+	for(int i=0;i<temp.size();i++)
+	{
+	ans.push_back(""+temp[i]);
+	ans.push_back(str[idx]+temp[i]);
+    }
+    return ans;
+	
+}
+int main()
+{
+    string s;
+    cin>>s;
+    vector<string> res=fun(s,0);
+    for(int i=0;i<res.size();i++)
+    cout<<res[i]<<endl;
+	return 0;
+}
