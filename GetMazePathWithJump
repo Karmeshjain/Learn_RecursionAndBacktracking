@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<string> getmazejump(int sr,int sc,int dr,int dc)
+{
+	if(sr==dr && sc==dc)
+	return {""};
+	vector<string> paths;
+	//horizontal paths
+	for(int i=1;i<=dc-sc;i++)
+	{
+		vector<string> hget=getmazejump(sr,sc+i,dr,dc);
+		for(auto j:hget)
+		paths.push_back("h"+i+'0'+j);
+	}
+		vector<string> vpaths;
+	//horizontal paths
+	for(int i=1;i<=dr-sr;i++)
+	{
+		vector<string> vget=getmazejump(sr+i,sc,dr,dc);
+			for(auto j:vget)
+		paths.push_back("v"+i+'0'+j);
+	}
+		vector<string> hapths;
+	//diagonal paths
+	for(int i=1;i<=dc-sc&&i<=dr-sr;i++)
+	{
+		vector<string> dget=getmazejump(sr+i,sc+i,dr,dc);
+			for(auto j:dget)
+		paths.push_back("d"+i+'0'+j);
+	}
+	return paths;
+}
+int main()
+{
+  int n,m;
+  cin>>n>>m;
+  vector<string> temp=getmazejump(1,1,n,m);
+  for(int i=0;i<temp.size();i++)
+  cout<<temp[i]<<" ";
+}
