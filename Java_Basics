@@ -1,0 +1,364 @@
+Java programming:
+its a secure language use for money application
+Garbage collector release the blocks which we dont need using further in our programs.
+
+u cant make static memeber variable in a function its a error.
+
+one thing also to remember that static functions only use static memeber
+ 
+wrapper class for oop 
+Integer i1=Integer.valueOf("123")
+Double d1=Double.valueOf("3.14")
+Integer i1=Integer.valueOf("101011",2)->for binary value
+
+int a=Integer.parseInt("123")->>convert 123 string to int type
+
+int c=i1.intValue();   //convert object to normal value
+
+for making packages 
+(package world;) as first line of the program
+
+we can only make one public class  in one java file ok!
+
+import in java:
+used to import packages of other
+
+import pack2.student;&&import pack2;
+sirf student class       pura packagae
+
+access modifiers:
+4 type->1 more default we cant use world default keyword just dont put any access modifeir
+
+outer class can be default type or public type only
+
+private can only use in same class
+protected any class of same package and child class from other package
+public use anywhere any class of any package
+default only form the class of same package
+
+
+remeber in java u cant make object like class karmesh than "karmesh obj1" this is wrong u are
+ just making reference variable 
+for making object use "karmesh obj1=new karmesh();"... 
+
+
+Inheritance:
+class Subclass extends Superclass
+{
+}
+extend is a keyword
+
+in c++ we can have more than one parent class but not in java only one parent class no multiple inheritance
+private member can inherit but can not accesible
+
+three type of inheritance single,multi,hierarchical
+
+initialization block {}
+only start with{ and end with}
+Instance intialization block:
+-->>these will run when object form like constructor before constructor run it will run
+can not use return keyword but u can use this keyword
+
+static intialization block:
+start with static keyword
+-->>
+static{  }
+mainly use to intialization of static variable
+it can access only static variable not instance variable
+it only run one time for a class not like instance intitalization block which run on every object
+run when u make first time object or u use its variable
+ this or super cant use in static block
+
+Overloading and ovveriding in java::
+class a
+{
+public void f1(int x)
+{}
+}
+class b extends a
+{
+public void f1(int x,int y){}
+}
+public class example
+{
+public static void main(string [] args)
+{
+Bb obj=new b();
+obj.f1(4);
+obj.f1(3,5);
+}
+}
+
+Overloading::^^^^^
+In c++ this is called method hiding we are not able to call parent version
+but in java we can call both like overloading and number of arguement
+in java its like overloading function call according to number of arguements given
+both can be in parent,child,one in child one in parent 
+in above example both parent and child function runs
+
+Overriding::
+if number of arguement are same u can only call child function 
+becuase child function ovveride the parent function
+
+
+final keyword in java:: we have to intitalize it in any way or once only
+public final int x; //final instance memeber variable
+final variable only once initialize
+blank final variable force the constructor to do it or a intitalization block to do it
+final static member variable-->>public final static int y;
+we can intialize it on the spot or in a static intitalization block
+
+final class::
+u can not inherit this class u cant inherit more 
+final methods::
+if we put final keyword before function name can not be ovverride (inheritance);
+
+
+this JAVA::
+its like reference variable
+used in name collision (this.l;this.b;)
+it represent the caller object !;
+
+
+super keyword in java::
+
+it avoids name conflict b/w member of superclass and subclass
+
+class a
+{
+int z;
+public void f1()
+{}
+}
+class b extends a
+{
+int z;
+public void f1()
+   {
+    int z;
+    z=0; //local
+    this.z=1; //child class
+    super.z=2; //parent class
+   super.f1()   // by using this we can call parent class f1 function this use 
+                //krene se ya phir f1 call krne se recursion call ho jaega
+   }
+}
+public class example
+{
+public static void main(string [] args)
+{
+Bb obj=new b();
+obj.f1();
+}
+}
+
+super();->>constructor of class
+
+constructor can call other constructor of the same class or superclass
+when constructor is calling itself constructor (differ in arguement)
+then parent class constructor its called constructor chaining
+
+
+ABSTRACT class:::
+in c++ we made pure virtual function
+in java we use abstract keyword not in c++
+
+We cant make abstract class object
+ java abstract class are used to declare common characterstics of sub class
+to use it we inherit it and then use it
+
+Abstract method::;
+class must be declare with abstract keyword to contain abstract methods
+---->>>>abstract void show();<<<<-----
+we must have to override these in child class// not neccasary to override but u can if u want
+
+INTERface:::;
+interface name
+{
+}
+in interface we dont make body of a function
+in interface all members are by default public we cant change it
+the variable are by default public,static and final also in an interface and cant change 
+
+interface have no object it doesnt have constructor
+
+we can also extend the interface
+interface i3 extends i1,i2
+{}
+class A implements i3
+{
+}
+orr we can also use 
+class B extends A implements i3,i4 // here A is a class
+{}
+ 
+interface i1 {void f1();}
+interface i2 {void f2();}
+class a implements i1,i2
+{
+public void f1(){}
+public void f2(){}
+public void f3(){}
+}
+class example
+{
+public static...main(..
+{
+i2 obj=new a();  //here we cant make object of interface but we can
+obj.f1();          make its reference variable and as inheritance parent can point child same as its 
+                    in interface
+obj.f2();         // but it can only its function in this example f2 will call only f1 and f3 
+                    show error because reference variable is of i2
+obj.f3();
+}
+}
+ 
+Difference between abstract class and  interface::
+
+abstract class can have access modifeir but in interface they are public by default and cant change also
+abstract class may or may contain abstract method but in interface they are abstract method by default
+interface all member variable are static not in abstract
+interface all member are final not in abstract
+interface dont have constructor but in abstract it have
+
+dono ka object nhi ban skta isiliye dekh rhe hai ye sab
+
+Taking input from keyboard:::::..;;
+class Input
+{
+public static...
+{
+System.out.println("Enter your name and age");
+Scanner sc=new Scanner(System.in);
+String name=sc.next();
+int age=sc.nextInt();
+System.out.println("Name:"+name+"Age:"+age);
+}
+}
+
+Arrays in java:::;'
+
+int []arr=new int[5];
+int arr[]=new int[5];
+int arr[];//its not making a array its only making a reference variable or internal pointer
+
+here arr is like a pointer and pointing a block and arr.length that mean it is equal to the length of array
+in java u cant give size and value together
+like int arr[]=new int[5]{2,3,4,5,8};
+
+2d array:
+int [][]a=new int[4][5];   //correct
+int [][]a=new int[4][];   //correct
+int [][]a=new int[][5];   //error
+int [][]a=new int[][];    //error
+
+Distinct length feature::
+int [][]a=new int [4][];
+a[0]=new int [5];
+a[1]=new int [3];
+
+String class in java::;{
+
+java.lang.String class is final class 
+
+string class is immutable class that mean once created cant be changed 
+Direct use we can not to many any object etc.
+String str="Karmesh";
+String str1=new String("Karmesh");
+s1==s3//print false
+
+String methods++Exception handling
+i skip the lectures
+
+-->>>Threads;:::;;
+ without threading program run on single thread
+FOr using parallel works we use threads mutlithread
+java.lang.Thread class
+
+Thread using runnable interface
+  
+class A implements Runnable
+{
+}
+class B implements Runnable
+{
+}
+class ..
+main..
+Thread t1=new thread(new A());
+Thread t1=new thread(new B());
+--------------------------------
+
+
+
+class A extends Thread
+{
+}
+class B extends Thread
+{
+}
+main...
+A o1=new A();
+B o2=new B();
+o1.start();
+o2.start();
+------------------------------
+Thread states 
+1->new thread states
+2->Runnable state
+3->not runnable state(User input)
+4->dead state(Complete ho jaye )
+
+Thread priority[[][][][.../
+
+MIN_PRIORITY(0) ->>lowest priority
+NORM_PRIORITY(5) ->>Default priority
+MAX_PRIORITY(10) ->>Highest priority
+
+synchronizing multiple threads::;
+synchronized method acquires a lock on the whole object. This means no other thread can use any synchronized method 
+in the whole object while the method is being run by one thread.
+keyword-->>>synchronized(account){ iske andar jha par dikkat aa rhi hai vha lageaga run function me }
+bracket ke andar vo likehege jisko aap synchronize krna chhta ho
+jese hi is block me enter krega dusra thread ko mauka nhi milega ki vo dusre operation perform krege
+ use in bank accounts
+
+
+Garbage collector___----===+
+
+if u use new keyword block dont destory.... until program dont end
+
+in c++ we can use delete keyword to delete the consumed memory forcefully..
+
+But in JAVA------
+memory releases automatically (no delete keyword in java)
+and this is done by JVM automatically 
+before ending of object just finalize function executed
+
+we cannt force garbage collection its a request not a command
+ it increasse memory efficiency and memory leak se bachata hai
+
+
+Finalize-->>>//
+
+we need to require properly release the memory kyoki garbage jise delete krega vo bhi to kisi ko point krega 
+so we need to properly release it so we use finalize function before destruction done by garbage collector
+if we dont make finalize function than in every program there is Object class and in which already finalize 
+function 
+is there and it always parent of every class so finalize will call every time so we have to ovverride 
+it in child class
+normally we can also call finalize function but garbage collector also call before running itself
+
+garbage collector ignore exception in finalize function
+
+in java finalize is not like destructor only call itelf finalize we cant call base class 
+finalize by child class finalize so we have to write super keyword and than we can call finalize of 
+base class no automatic call like c++
+
+finalize is a request if we call expictlly
+
+
+
+
+
+
