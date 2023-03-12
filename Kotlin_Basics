@@ -1,0 +1,175 @@
+Kotlin Langauge:
+Code:
+
+fun main() {
+    println("hello World")
+    val immutable="Abc";
+    var mutable="cba";
+    val t:String ="avb";
+    mutable="Prabhat";
+    var a:String? ="karmesh";
+    a=null;
+    println("Hello $mutable ${1+2+3}");
+    val arr=arrayOf(1,2,3);
+    println(arr[0])
+    val ia:IntArray=intArrayOf(1,2,3);
+    println(ia[2])
+    println("Enter value of i")
+    val i:Int=Integer.valueOf(readLine())
+    println(i)
+    if(i==6)
+    println("Value of i is $i")
+    else 
+    println("not 6 its $i")
+    val j=if(i==6) "Value of i is $i" else "not 6 its $i";
+    println(j)
+    var day=readLine();
+    val result=when(day)
+    {
+        "Monday","Wednesday"->println("Its monday or wednesday")
+        "Friday"->println("Its Friday")
+        else ->println("Not a day")
+    }
+     val result2=when{
+        day=="Monday"->"Its monday or wednesday"
+        day=="Friday"->"Its Friday"
+        else ->"Not a day"
+    }
+    println(result2)
+    val list=listOf<String>("A","B","C");
+    val mp=mapOf(1 to "D",2 to "E",3 to "F");
+    for(a in list)
+    {
+        println(a);
+    }
+    for((key,value) in mp)
+    {
+        println("$key and $value")
+    }
+     println("\n")
+    for(i in 1..9 step 2)
+    println(i)
+      println("\n")
+    for(i in 1 until 9)
+    println(i)
+    println("\n")
+    for(i in 9 downTo 1)
+    println(i)
+    
+    fun String.getEmotion():String{
+        return when{
+            last()=='?'->"Question"
+            last()=='!'->"Excitement"
+            else ->"Nothing"
+        }
+    }
+    var s="Hi!"
+    println("Hello?".getEmotion()+s.getEmotion())
+}
+
+Output:
+hello World
+Hello Prabhat 6
+1
+3
+Enter value of i
+6
+6
+Value of i is 6Value of i is 6
+Monday
+Its monday or wednesday
+Its monday or wednesday
+A
+B
+C
+1 and D
+2 and E3 and F
+
+
+1
+3
+5
+7
+9
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+
+9
+8
+7
+6
+5
+4
+3
+2
+1
+QuestionExcitement
+
+OOP in Kotlin:
+
+open class Person(var firstName:String="Karmesh",var lastName:String="Duggar",var age:Int=20)
+{
+    val fullName:String get()="$firstName $lastName"
+    constructor(year:Int):this()
+    {
+        age+=year
+    }
+    open val id:String
+    init
+    {
+        id=fullName+age
+    }
+}
+class Employee(company:String):Person()
+{
+    override val id=fullName+company+age
+}
+fun main() 
+{
+    val i=Person();
+    i.lastName="KKJJ"
+
+    val j=Person(age=21,lastName="Madan",firstName="Prabhat");
+    println(j.fullName)
+    
+    val k=Person(year=2)
+    println(k.id)
+    val l=Employee("Shark")
+    println(l.id)
+}
+
+Output:
+Prabhat Madan
+Karmesh Duggar20
+Karmesh DuggarShark20
+
+abstract class Person(var firstName:String="Karmesh",var lastName:String="Duggar",var age:Int=20)
+{
+    val fullName:String get()="$firstName $lastName"
+    constructor(year:Int):this()
+    {
+        age+=year
+    }
+    abstract val id:String
+}
+class Student(school:String):Person()
+{
+    override val id=fullName+school+age
+}
+fun main() 
+{
+    val l=Student("Modern")
+    println(l.id)
+}
+
+Output:
+Karmesh DuggarModern20
+
