@@ -1,0 +1,434 @@
+intro to c#.net
+1->c# is language and .net is a framework on which it is run
+2->its a type safe oop programming language.
+int x="21" error in c# but in c it is ok
+3->source code in c# is compiled into intermediate language (IL)or sometime MSIL
+that conforms to CLI(Common language infrastructure) specifications.
+4->this is how we take value of a float variable. 
+5->c++ me function in this we call function as method;
+float x1;
+  x1 = float.Parse(Console.ReadLine());
+int age = Convert.ToInt32(Console.ReadLine());
+==>Console.ReadLine() method returns a string
+
+==>The Math.Abs(x) method returns the absolute (positive) value of x:
+
+==>>string txt = "We are the so-called \"Vikings\" from the north.";
+      Console.WriteLine(txt);
+this prints
+We are the so-called "Vikings" from the north.
+
+==>Remember: Numbers are added. Strings are concatenated.
+
+
+ obj.GetType();->Return the type of object it is
+
+
+
+{0}->Decimal value of number
+
+
+
+
+Declare an array in c#->
+
+string[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+
+int[] a_array = new int[10] {1,2,3,4,5,6,7,8,9,10};
+// declares a 1D Array of string. 
+        string[] weekDays; 
+  
+        // allocating memory for days. 
+        weekDays = new string[] { "Sun", "Mon", "Tue", "Wed", 
+                                  "Thu", "Fri", "Sat" }; 
+ 
+
+int[] myNumbers = {5, 1, 8, 9};
+      Console.WriteLine(myNumbers.Max());  // returns the largest value
+      Console.WriteLine(myNumbers.Min());  // returns the smallest value
+      Console.WriteLine(myNumbers.Sum());  // returns the sum of elements
+
+
+Geek geek1 = new Geek("GFG", 1); THis is how u have to create an object and call the constructor;
+And after each function u have to write public;
+
+
+
+==>>
+It is also possible to send arguments with the key: value syntax.
+
+That way, the order of the arguments does not matter:
+
+
+
+static void MyMethod(string child1, string child2, string child3) 
+{
+  Console.WriteLine("The youngest child is: " + child3);
+}
+
+static void Main(string[] args)
+{
+  MyMethod(child3: "John", child1: "Liam", child2: "Liam");
+}
+
+// The youngest child is: John
+
+
+
+
+
+
+
+
+Foreach loop;Runs for whole array
+foreach (int items in a_array)                   for(int items = 0; items < a_array.Length; items++)
+{                                  ========        {
+                                              Console.WriteLine(a_array[items]);                                               
+                                   ========         }
+Console.WriteLine(a_array[items]);
+}
+
+
+
+public String Name 
+    { 
+  
+        get
+        { 
+            return studentName; ///mangega to return krege
+        } 
+  
+        set
+         { 
+            studentName = value; ///dega to set krege value;
+        } 
+    } 
+
+
+class GFG { 
+  
+    // Main method 
+    static public void Main() 
+    { 
+  
+        // Declaring variable 
+        // without assigning value 
+        int i; 
+  
+        // Pass variable i to the method 
+        // using out keyword 
+        Addition(out i); 
+  
+        // Display the value i 
+        Console.WriteLine("The addition of the value is: {0}", i); 
+    } 
+  
+    // Method in which out parameter is passed 
+    // and this method returns the value of  
+    // the passed parameter 
+    public static void Addition(out int i) 
+    { 
+        i = 30;                 ////out function in c# it just returns the value
+        i += i; 
+  }
+}
+
+
+
+we can also use keyword override and virtual in method overriding
+class ke nam ke aage abstract lagana hoga for abstract class and abstract function
+ ""public abstract void fun()""
+
+
+public interface a 
+{
+}; interface ke sare memeber abstract hote hai so you have to derive it in
+ child class..interface provide 100% abstraction thats why we use interface
+ 
+we cant do multiple inheritance in c# but if we make all the base class as 
+iterface then we can use multiple inheritance..                                       
+    
+==>WriteLine() prints the output on a new line each time,
+while Write() prints on the same line 
+
+==>remember that const keyword cant be ovverride value;
+
+
+==>>> OOOOPPPPSSS
+
+class Car
+{
+  private string model = "Mustang";
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Car myObj = new Car();
+    Console.WriteLine(myObj.model);
+  }
+}
+ 
+The output will be:
+
+'Car.model' is inaccessible due to its protection level
+The field 'Car.model' is assigned but its value is never used
+
+
+class Car
+{
+  private string model;
+
+  static void Main(string[] args)
+  {
+    Car Ford = new Car("Mustang");
+    Console.WriteLine(Ford.model);
+  }
+}
+ 
+The output will be:
+
+Mustang
+
+
+
+==>If you don't want other classes to inherit from a class, use the sealed keyword:
+
+
+If you try to access a sealed class, C# will generate an error:
+
+sealed class Vehicle 
+{
+  ...
+}
+
+class Car : Vehicle 
+{
+  ...
+}
+The error message will be something like this:
+
+'Car': cannot derive from sealed type 'Vehicle'
+
+
+==>>
+Virtual and ovverride
+class Animal  // Base class (parent) 
+{
+  public void animalSound() 
+  {
+    Console.WriteLine("The animal makes a sound");
+  }
+}
+
+class Pig : Animal  // Derived class (child) 
+{
+  public void animalSound() 
+  {
+    Console.WriteLine("The pig says: wee wee");
+  }
+}
+
+class Dog : Animal  // Derived class (child) 
+{
+  public void animalSound() 
+  {
+    Console.WriteLine("The dog says: bow wow");
+  }
+}
+
+class Program 
+{
+  static void Main(string[] args) 
+  {
+    Animal myAnimal = new Animal();  // Create a Animal object
+    Animal myPig = new Pig();  // Create a Pig object
+    Animal myDog = new Dog();  // Create a Dog object
+
+    myAnimal.animalSound();
+    myPig.animalSound();
+    myDog.animalSound();
+  }
+} 
+ 
+ 
+The output will be:
+
+The animal makes a sound
+The animal makes a sound
+The animal makes a sound
+
+
+C# provides an option to override the base class method, by adding the virtual keyword to the 
+method inside the base class, and by using the override keyword for each derived class methods
+
+
+class Animal  // Base class (parent) 
+{
+  public virtual void animalSound() 
+  {
+    Console.WriteLine("The animal makes a sound");
+  }
+}
+
+class Pig : Animal  // Derived class (child) 
+{
+  public override void animalSound() 
+  {
+    Console.WriteLine("The pig says: wee wee");
+  }
+}
+
+class Dog : Animal  // Derived class (child) 
+{
+  public override void animalSound() 
+  {
+    Console.WriteLine("The dog says: bow wow");
+  }
+}
+
+class Program 
+{
+  static void Main(string[] args) 
+  {
+    Animal myAnimal = new Animal();  // Create a Animal object
+    Animal myPig = new Pig();  // Create a Pig object
+    Animal myDog = new Dog();  // Create a Dog object
+
+    myAnimal.animalSound();
+    myPig.animalSound();
+    myDog.animalSound();
+  }
+} 
+ 
+ 
+The output will be:
+
+The animal makes a sound
+The pig says: wee wee
+The dog says: bow wow
+
+
+
+===>>>
+Abstract 
+Abstract class: is a restricted class that cannot be used to create objects
+Abstract method: can only be used in an abstract class, and it does not have a body.
+ The body is provided by the derived class
+
+
+
+An interface is a completely "abstract class",By default, members of an interface are abstract and public.
+interface Animal 
+{
+  void animalSound(); // interface method (does not have a body)
+  void run(); // interface method (does not have a body)
+}
+
+==>>
+The finally statement lets you execute code, after try...catch, regardless of the result:
+
+
+
+
+
+
+
+Unity game development--->>
+Game.destroy(game_object_name,3); the particular game_object destroy in 3 secondsf
+vec=k;//where vec=Vector3 type; and k can be transfrom.postion,transform.localscale
+position    The position of the transform in world space. 
+localPosition   Position of the transform relative to the parent transform.
+
+
+in rigid body->If isKinematic is enabled, Forces, collisions or joints will not affect the rigidbody anymore
+
+
+drag is due to air effect whereas in angular drag is rotation
+and interpolate and exterpolate done the happening action smoothly in rigid body component
+
+
+Is Trigger property does not behave as a solid object and will simply allow other colliders to pass through.
+
+
+OnCollisionEnter(Collision collision)->check whether collision happen or not
+void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision happen");
+    }
+OnTriggerenter(Collision collision)->check whether it passes through trigger or not
+void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Triggered");
+    }    
+
+input functions::
+getkeydown will happen once when you hit the key
+getkey will continue to happen while you are holding the key
+getkeyup happens once when you release key
+For jump;
+if(Input.GetKeyDown(KeyCode.Space)) ***input mean i am taking input from user and keycode mean particular keycode
+                                                        and than the key
+        {
+            vec = transform.position;
+            vec.y =vec.y+ 1;
+            transform.position = vec;
+
+        }
+
+
+both have to use before access specifier
+serializedfield can be use when u want to show the value of private thing in inspector
+hideininspector can hide the value in inspector for public variable 
+
+
+
+for all up,down,right,left and space;
+vec = transform.position;
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            vec.y =vec.y+ 1;
+            transform.position = vec;
+
+        }
+     else if(Input.GetKey(KeyCode.RightArrow))
+        {
+            vec.x += 0.1f;
+            transform.position = vec;
+      
+        }
+        else if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            vec.x -= 0.1f;
+            transform.position = vec;
+        }
+        else if(Input.GetKey(KeyCode.UpArrow))
+        {
+            vec.z += 0.1f;
+            transform.position = vec;
+        }
+        else if(Input.GetKey(KeyCode.DownArrow))
+        {
+            vec.z -= 0.1f;
+            transform.position = vec;
+        }
+prefabrication make a prefab and than it was able to apply on the the object u select.
+
+
+how to create object at run time 
+cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.transform.position = transform.position;
+
+voidcollisonenter(Collision col)
+{
+if(col.gameobject.tag=='enemy')
+{
+}
+}
+
+Audiosource audio=Getcomponent<Audiosource>(); the audio file u attach go into audio type;
+audio.Play(); for playing audio
+Destroy(col.gameobject) // destroy the particular object
+Destroy(this.gameobject) // destroy for which script is written
+enem.gameobject.tag='enemy';// set the tag name as enemy for particular game object
