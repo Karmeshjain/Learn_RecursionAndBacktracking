@@ -1,0 +1,225 @@
+Git/GitHub
+Commit
+Git thinks of its data like a set of snapshots of a mini filesystem. 
+Every time you commit (save the state of your project in Git), it 
+basically takes a picture of what all your files look like at that moment 
+and stores a reference to that snapshot. 
+Repository / repo
+A repository is a directory which contains your project work, as well as a few files 
+(hidden by default on Mac OS X) which are used to communicate with Git. Repositories can exist 
+either locally on your computer or as a remote copy on another computer. A repository is made up of commits.
+
+Working Directory
+The Working Directory is the files that you see in your computer's file system. 
+When you open your project 
+files up on a code editor, you're working with files in the Working Directory.
+
+Staging Area / Staging Index / Index
+A file in the Git directory that stores information about what will go into your next commit. 
+
+SHA
+A SHA is basically an ID number for each commit.
+
+Branch
+A branch is when a new line of development is created that diverges from the main line of development. This 
+alternative line of development can continue without altering the main line.
+
+Use the git init command to create a new, empty repository in the current directory.
+
+ls - used to list files and directories
+mkdir - used to create a new directory
+cd - used to change directories
+rm - used to remove files and directories
+
+ This .git directory is the "repo"! This is where git records all of the commits and keeps track of everything
+( it'll be a hidden directory)
+
+The command is git clone and then you pass the path to the Git repository that you want to clone.
+The git clone command is used to create an identical copy of an existing repository.
+
+$ git clone <path-to-repository-to-clone>
+This command:
+
+takes the path to an existing repository
+by default will create a directory with the same name as the repository that's being cloned
+can be given a second argument that will be used as the name of the directory
+will create the new repository inside of the current working directory
+
+The git status command will display the current status of the repository.
+
+$ git status
+I can't stress enough how important it is to use this command all the time as you're first learning Git. This command will:
+
+tell us about new files that have been created in the Working Directory that Git hasn't started tracking, yet
+files that Git is tracking that have been modified
+a whole bunch of other things that we'll be learning about throughout the rest of the course ;-)
+Helpful Links
+
+The git log command is used to display all of the commits of a repository.
+
+$ git log
+By default, this command displays:
+
+the SHA
+the author
+the date
+and the message
+...of every commit in the repository
+
+he --oneline flag is used to alter how git log displays information:
+
+$ git log --oneline
+This command:
+
+lists one commit per line
+shows the first 7 characters of the commit's SHA
+shows the commit's message
+
+the --stat flag is used to alter how git log displays information:
+
+$ git log --stat
+This command:
+
+displays the file(s) that have been modified
+displays the number of lines that have been added/removed
+displays a summary line with the total number of modified files and lines that have been added/removed
+git log -p Output
+Using the image above, let's do a quick recap of the git log -p output:
+
+🔵 - the file that is being displayed
+🔶 - the hash of the first version of the file and the hash of the second version of the file
+not usually important, so it's safe to ignore
+❤️ - the old version and current version of the file
+🔍 - the lines where the file is added and how many lines there are
+-15,83 indicates that the old version (represented by the -) started at line 15 and that the file had 83 lines
++15,85 indicates that the current version (represented by the +) starts at line 15 and that there are now 85 lines...these 85 lines are shown in the patch below
+✏️ - the actual changes made in the commit
+lines that are red and start with a minus (-) were in the original version of the file but have been removed by the commit
+lines that are green and start with a plus (+) are new lines that have been added in the commit
+
+the -p flag (which is the same as the --patch flag) is used to alter how git log displays information:
+
+$ git log -p
+This command adds the following to the default output:
+
+displays the files that have been modified
+displays the location of the lines that have been added/removed
+displays the actual changes that have been made
+
+
+git add command is used to move files from the Working Directory to the Staging Index.
+
+$ git add <file1> <file2> … <fileN>
+This command:
+
+takes a space-separated list of file names
+alternatively, the period . can be used in place of a 
+list of files to tell Git to add the current directory (and all nested files)
+
+The git commit command takes files from the Staging Index and saves them in the repository.
+
+$ git commit
+This command:
+
+will open the code editor that is specified in your configuration
+(check out the Git configuration step from the first lesson to configure your editor)
+Inside the code editor:
+
+a commit message must be supplied
+lines that start with a # are comments and will not be recorded
+save the file after adding a commit message
+close the editor to make the commit
+
+
+commit messaage should be->do keep the message short (less than 60-ish characters)
+do explain what the commit does (not how or why!)
+
+the git diff command is used to see changes that have been made but haven't been committed, yet:
+
+$ git diff
+This command displays:
+
+the files that have been modified
+the location of the lines that have been added/removed
+the actual changes that have been made
+
+the .gitignore file is used to tell Git about the files that Git should not track. 
+This file should be placed in the same directory that the .git directory is in.
+
+If you want to keep a file in your project's directory structure 
+but make sure it isn't accidentally committed to the project, you can use the specially named file, 
+.gitignore (note the dot at the front, it's important!). 
+Add this file to your project in the same directory that the hidden .git directory is located. 
+All you have to do is list the names of files that you want Git to ignore (not track) and it will ignore them.
+we add the name of the files that are to be ignored.
+
+ the git tag command is used to add a marker on a specific commit. The tag does not move around as new commits are added.
+
+$ git tag -a beta
+This command will:
+
+add a tag to the most recent commit
+add a tag to a specific commit if a SHA is passed
+
+the git branch command is used to manage branches in Git:
+
+# to list all branches
+$ git branch
+
+# to create a new "footer-fix" branch
+$ git branch footer-fix
+
+# to delete the "footer-fix" branch
+$ git branch -d footer-fix
+This command is used to:
+
+list out local branches
+create new branches
+remove branches
+
+the git merge command is used to combine branches in Git:
+
+$ git merge <other-branch>
+There are two types of merges:
+
+Fast-forward merge – the branch being merged in must be ahead of the checked out branch. The checked out branch's pointer will just be moved forward to point to the same commit as the other branch.
+the regular type of merge
+two divergent branches are combined
+a merge commit is created
+
+A merge conflict happens when the same line or lines have been changed on different branches that are being merged. Git will pause mid-merge telling you that there is a conflict and will tell you in what file or files the conflict occurred. To resolve the conflict in a file:
+
+locate and remove all lines with merge conflict indicators
+determine what to keep
+save the file(s)
+stage the file(s)
+make a commit
+Be careful that a file might have merge conflicts in multiple parts of the file, so make sure you check the entire file for merge conflict indicators - a quick search for <<< should help you locate all of them.
+
+Further Research
+
+ the git revert command is used to reverse a previously made commit:
+
+$ git revert <SHA-of-commit-to-revert>
+This command:
+
+will undo the changes that were made by the provided commit
+creates a new commit to record the change
+
+the git reset command is used erase commits:
+
+$ git reset <reference-to-commit>
+It can be used to:
+
+move the HEAD and current branch pointer to the referenced commit
+erase commits with the --hard flag
+moves committed changes to the staging index with the --soft flag
+unstages committed changes --mixed flag
+Typically, ancestry references are used to indicate previous commits. The ancestry references are:
+
+^ – indicates the parent commit
+~ – indicates the first parent commit
+
+
+
+
