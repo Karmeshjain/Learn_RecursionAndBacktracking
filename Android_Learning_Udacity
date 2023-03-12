@@ -1,0 +1,1802 @@
+This contains all the lessons that i learn from android development via udacity course:
+
+There are a thing called view which make the user interface 
+There are many types like image view,button,text view etc.;
+Combining all these we make a user interface in a android application ui;
+
+
+So what we use to make user interface is XML which is a Programming language.
+
+First is attribute Name :
+android:text
+Second is attribute value:
+"Happy Birthday"
+So we assign attribute name to attribute value;
+
+eg.android:text="HappBirthday"
+there are also some default value for every attribute;
+
+we can have a nice size of 48 dp for a button 
+48dp translates to approximately 9mm in physical size
+better screens will often have more pixels in the same amount of space
+
+wrap_content ->change the width and height of the TextView of wrap_content.
+android:layout:width="wrap_content"
+android:layout:hieght="wrap_content"
+wrap the layout to text.
+
+like dp there is one thing more named as sp(scale independent pixel) consistent over all devices.
+if we use sp then all the font get adjusted when according to user settings,prefrences.
+
+androidtextappearance is used when u dont want to declare sp values so that u can 
+use small medium large font in androidtextappearance.
+if we dont known which sp value to use we can use small medium large values.
+
+we can also use hex code in android colour for background,text etc
+
+all the images are in drawable folder
+android:scaleType="center"
+android:scaleType="centerCrop"
+
+VIEW GROUPS:
+child and parent.
+Linear Layout and relative layout:
+Linear->Arrange views in vertical column or horizontal row also
+Relative->relative to parent
+
+xmlns:android="http://schemas.android.com/apk/res/android"
+this is use for xml namespace declaration to avoid name conflict and
+all this belong to android.
+
+different widths on child views
+if we use fix dp value than view can get cut out
+if we use wrap content than its size vary on whats inside each view
+but if we use match_parent than its size and width get as wide as parent
+regardless what it has 
+Same apply for height also
+Match_parent->as wide or as same height as parent have
+android:layout_width="match_parent"
+
+match_parent and wrap_content::
+
+right spacing accross all screen devices
+we use layout hieght and width to 0dp and then
+use layout_weight to be 1.
+by default if we dont assign value of weight to a view it is zero
+it basically divide the available hieght(dont take height of other) or 
+width screen with weight sum and give them hieght or width accordinly to there weight
+and as weight value increase automatically it get more hieght on the screen and
+ lower weight the lower hieght it get(same in the case of width)
+
+both can be work same horizontal and vertical linear layout
+
+Relative layout:
+->Relative to parent
+android:layout_alignParentTop="true"
+android:layout_alignParentbottom="false"
+android:layout_alignParentleft="true"
+android:layout_alignParentright="true"
+
+for example you want to align a view to top left then align parent left and
+ top to be true and rest of the false;
+the values are by default false assign
+or also we can make it center horizonatal by
+layout_centerHorizontal="true";
+same we can do with vertical
+and also they are by default left to the postion
+
+by default if we dont specify the position then it get align to top left of the corner
+
+Relative to other views
+positioning children relative to other views
+
+we can assign view id names to views
+example->android:id="@+id/ben_textView"
+for assigning above one
+then to assign relative to it
+android:layout_toLeftOf="@id/ben_text_view"
+for right it is toRightof
+and top and bottom also available
+
+if we want to put some space in between images,text, and screen we do with padding and margin
+padding means if we add x amount of padding it give x amount of margin in every direction
+default value of padding is zero
+android:padding="8dp" IS equal to=:
+android:paddingLeft="8dp"
+android:paddingRight="8dp"
+android:paddingTop="8dp"
+android:paddingBottom="8dp"
+
+if we want to differ two parent then use margin
+otherwise in same parent then we can use padding
+
+margin need view group NOTE
+
+Padding is calculated between content and border. Margin is calculated outside the border.
+
+dont use relative layout everywehre because its more versatile than linear layout
+
+
+there are some steps which we have to follow
+1.Select Views
+2.Position Views
+3.Style the views
+
+in case of overlapping of views we have to use relative layout
+and in case of rows and coloums arrangement we have to use linear layout
+
+when application starts at the start of the app on create method is get called
+
+if overlapping is happening than you have to use layout weight in order to proper giving
+of positioning and they all take there space accordingly
+they divide the layout according to there weights assign
+
+we can access or use any resource in android studio for example for a image
+in java we use R.drawable.photo and in XML we can use @drawable/photo
+for string R.string.hello and in XML we can use @string/hello
+so thats how we can access the resource in java and xml differenlty
+
+oncreate method get call automatically when the activity get created 
+
+the XML code that make hierarchy of views are of java objects
+for example a text view are a java class basiclly there is a class 
+textview in which they have many methods to assign and change the values
+for example font colour,font type,font size etc
+so if we create a text view than its just a object of java class named as Textview
+so textview class are just use to make instances of the class
+what we can do is that we can create object by two methods 
+first is by creating an object with constructor and second one is by using factory method
+we we use @override keyword than the method get override and older version of this is not get refered
+
+
+first what we do is create textview id with diff names and than to use this textview we 
+refer this id name declare in
+XML file in java file and change the user interface properly and we should assign a 
+view ID if we need to refer to that view later
+
+
+findViewById->is use for finding a view that was identified by the id attribute from the XML file
+
+for example findViewByID(R.id.order_text_view)
+what it does it traverse the whole hierarchy and search for the text view assign by the id order_text_view
+
+
+textview is subclass of view 
+we have to typecast properly as by id 
+
+we can use toast method in case of wrong input or aware or for any other thing but we have to use this
+so that user dont think that our app is wrong or broken 
+and proper message can be displayed to user so that it can do things accrodingly
+
+in java if se seeing all the letter in capital that mean it is constant and its contents get never changes
+
+we can also use string.xml file in order to get supported by mulitiple langauge and define a string in string.xml
+and use its reference and it get changes accordingly to user mobile langauge prefrence
+so thats how we can use string.xml
+
+
+we can use style folder or make in in res/values so that once you intilizated a style you can use it later 
+and one change in someone style can affect all the views that are of same style
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HeaderTextStyle" >
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:height">48dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+</resources>
+
+
+style can be apply on a view but theme apply on activity or whole application
+
+there are three themes provided by android and we have to use them and we can ovverride it and make the changes
+accordingly
+
+in android manfiest file all the icon theme label are there so if we apply a theme it get apply to all
+but if you want that it apply only for a particular acitvity than you can use the codesnippet only there
+
+Every activity named is mention in manifest xml file and as we create any new activity it get added to manifest file
+and it get automatically generate for every app we create in android studio
+
+there are two types of intents implicit and explicit intent
+in implicit intent we dont known about which app component is going to handle our intent 
+but in explicit intent we known which acitivty is going to handle it exactly our intent 
+for example i want to open a link then phone will ask me which browser need to open 
+so this is implict intent but in explicit we known about intent is going to handle by which
+and we never call explcity intent to a third party app and we dont known whether it install on device or not
+
+there are three types methods are define they are of concrete class,abstract class and interface
+android team make a decision which method to 
+put in which type in order to use it easily.
+
+for touching event we can use OnClick via XML configuration(it create extra button variable) nd OnClickListener
+get implement and we use inherit it
+
+this is how we can check our code at every point using print message in log chat
+Log.v("NumberActivtiy","Word at index 0: "+words[0]);
+
+ArrayList can grow and shrink its size according to the need but Array cant so we use arraylist over array
+for example when it shows wifi near us then the size of available wifi can grow and shrink so there we use 
+array list also in you tube playlist it is there
+
+we have limited memory in our mobile device so for example we want to show list of 1000 contacts than we cant
+store 1000 text view at a time so there we use view recycling showing only limited views on the screen as per device
+screen size this is called view recycling ListView+Adapter
+using array listview and arrayadapter we can show only those we need to fill up the screen
+if we use listview nd array adapter instead of using full xml layout the memory usage can drastically decrease
+and its always good to use listview and array adapter so that the application can run on lower end devices also
+Inspect your app's memory usage with Memory Profiler
+so as there are three types of classes concrete,abstract,interface and there are different version a class
+so same apply for array adapter methods
+first one is ListAdapter which is an interface not implemented
+second one is BaseAdapter which is an abstract class partially implemented
+and at last ArrayAdapter which is an concrete class fully implemented
+
+so for creating a object with all methods and its state define we can create a custom class
+in which state methods are implemented in the class in we can use its object to make lot of
+instance of it for example
+a song so for this we can define state like songtitle,songlength,numberoflistener etc and also methods like
+getSongtilte,getAlbumName etc
+and than we can use it accoringly
+
+we also have to make the state as private variable so that known one can change it and our app dont get 
+crash or show unexcpected behaviour
+
+we can use only single text view in custom array adapter... so to use our own custom class in array adapter
+we have to extend or inherit the array adapter class get view method and change it accordinly than we can
+use the array adapter with our custom class
+
+
+we also have to prioritize our code changes
+and what we do for that is we do the riskiest part first
+
+when we download asset for android than there are different drawable folder in which each 
+folder represent a different
+resolution device for high density low density device etc
+and there are also multiple versions of the same image so there are different size depending on
+resolution of device that user has so the image look good for particular device
+so there are many kind of device with different screen density
+medum high xhdpi xxhdpi xxxhdpidevices
+dots per inch
+
+also make sure that the image id in class should be private so that no one can 
+access it and change it if we declare it
+as public than other classes can change it and it can cause crash in our app
+
+we have to do constructor overloading so that different arugument things can work for example some work with
+image id some dont so in that case we have to do overloading
+
+we can also use setVisibilty method in order to set visibilty of an view as invisble visible and gone
+
+we can also set gravity of a item inside a layout so that layout get align acc. to gravity which value can be
+top bottom and center
+
+to reduce the app memory usage we have to store the background colour information in word adapter class
+so everytume a new word adapter object create a list it will apply same background to all list items
+
+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
+
+there are two types of method synchronous and asynchronous in which
+synchronous is wating for something to happen and doing nothing else until it happens before proceeding 
+where as asynchonous is do something else while you are waiting for the event to happen when the event 
+happens you will get called back and you can jump into action
+
+and if the event get completed than we can call setOnCompletetion and this will call the method when the it get 
+completed
+
+what we have to consider we have to free the resources when its not in use
+so we have to determine when you no longer need the resource for particular resource and how to free them
+
+so we have to release the memory accordingly
+
+so what we need is when user is interacting with our app the resources are in use but when users leave
+ the screen
+and focus on other application we want that the resoruces get conserved when it get come back so 
+to all these handling
+of how we can manage the resources for our application we learn the topic of activity life cycle
+and
+there are many stages in it such as created,started,resumed,paused,stopped and destroy
+so we can do the things using oncreate onpause method and do the things in our code accordingly
+
+we also use super.onStop() so that predefined resource deallocation by android team can be done properly
+
+audiomanager class allow us to reques audio focus and abadon audio focus and register a listern to get
+notified of audio focus state changes
+
+so there are many states of audio focus in order to play the audio accordingly
+
+what we have to keep in mind when button get clicked we also play the animation using ./selectableitemBackground
+
+
+
+
+
+
+
+
+
+
+Networking in android:
+what we want that data was able to fetch from internet and then show it on our application of mobile
+... for that what we have to do is there is a thing called API application programming interface
+in which different programers help other to let there data fetch from there informative website such as
+weather,disaster info etc,so for information we have to search we add web API keyword in search with that 
+and use it we have to call the website URL and call different methods and parameters to get our required information 
+the methods are of different types and we have to give them differnt parameter to fetch our data properly
+
+
+JSON
+[->represent Array;
+{->represent object;
+Java script object notation
+example of a json object is
+{ "name":"John", "age":30, "car":null }
+they are like key and value pair
+every key has its corresponding value;
+key can also point to nested object also
+
+there are three types:
+json primitive which is string bool int etc only single value can assign as key value pair
+than there is json array which is array of same object or data type
+then we have json object which is consit of json primitive and json array a whole object encapsulated -
+
+and by knowledge of that we can fetch the value in which we are intrested in our app by this key value pair
+
+so we can traverse it deeper and get our data via json objects
+so we known how to traverse a json object and fetch or get our needed data from there
+
+so now we wnat to get data from json object into our app using JAVA code
+so for that we have a class in JAVA named as JSONObjects
+
+how we can do parsing in json is first what we have string in which Json objects are define
+for eg. String candyJson="{\"candies\":[{\"name\"........";
+now we convert it into json object by passing this string as constructor in JSON class
+JSONobject root=new JSONObject(candyJson); this way we get the all root value pair in root
+then afterthat we get it accoringly
+after getting json object from json string we now get array inside it
+JSONArray candiesArray=root.getJSONArray("candies");// now by that what we get is candies array which contain 2 more
+values so for that values we do JSONObject firstCandy=candiesArray.getJSONObject(0); this will give first value
+and than we fetch it directly
+with String name=firstCandy.getString("name"); we get the name attribute value
+and int count=firstCandy.getInt("count");  we get the count attribute value
+
+our Json string is 
+{
+"candies":[
+{
+"name":"Jelly beans",
+"count":10
+}
+]
+}
+
+Networking->what we do we sent http request to needed information website through a network establish between 
+the client and web server than web server respond back and sent back the required data to client in form of html
+or json xml etc and data get showed to us for different device according to required field (computer get show
+more data because of larger screen while mobile less) and all these communication handle with the internet
+which is required to communicate between the client and webserver. webserver can be any google,usgs,yahoo etc
+once the client recieve the response from the server they control how the data gets displayed to the users
+
+URL is uniform resource locator it identifes the location of an internet resouce.
+
+HttpURLConnection this class help us to recive data accross the web using an HTTP connection.
+
+
+So there is a android system architecture through which we user,developer was able to use the device
+	
+first is our app in which all the ready functionality is there we can use the app as we want
+than for developer to make this app are framework there are many framework classes in java through which
+we are able to use this classes directly and with few lines of code we can achive the required functionality
+than these framework interact with android operating system which have proper guide to handle the framework
+and exceuting deveoper code. than the android operating system interact with physical device hardware
+like speaker,radio,microphone etc.
+
+there are many request we can send to interact with the web server
+in which GET is basically we only want to see the information and take it back(retrieve the data from server)
+POST is basically we want to change the web server information with our information we also have to send that 
+what information we want to update and with which data.
+delete uses for delete
+
+
+urlConnection = (HttpURLConnection) url.openConnection();    
+urlConnection.setRequestMethod("GET");
+urlConnection.setReadTimeout(10000 /* milliseconds */);
+urlConnection.setConnectTimeout(15000 /* milliseconds */);
+urlConnection.connect();   //this is where we establish the HTTP connection with the server 
+                                before this line is setting up the http request
+inputStream = urlConnection.getInputStream();   //after this line is about recieving response and 
+                                                   making sense of it in our app json ...
+jsonResponse = readFromStream(inputStream);
+
+
+and if your request was not successfull then error 404 come
+
+and http status codes are there
+200->OK
+301->moved permanently
+303->page not found
+500->internal server error
+
+when a app receives the data it comes in as an input stream it can be text images etc and input stream its in form of
+zero and one then after coming into input stream its just stream of information than after that we need to extract
+data from it so for it we se buffer reader class 
+
+first we get input strream into input stream object
+then we covert input stream to buffer reader (readFromStream)
+we use InputStreamReader for that but it read single character at a time
+
+
+than we wrap it to BUfferReader by passing inputstreamreader converted data
+than we can convert it to string and read it easily
+
+String is immutable cant change once created but string builder is mutable it can change
+
+there are many exceptions which we have to handle as a developer because if we dont than app get crash we handle it
+check it accordinlgy if exception is thrown we have to catch it we no one catch it than app get crash
+
+we put the code that can throw an exception in try block and into catch if exception was thrown
+
+Thread and parallelism
+when our one task is executing we can be prepare for other task also in the same way we can multitasking in our 
+devices.
+so we have to do multitasking in order to make our app really good and nice and android apps are really good at
+multitasking
+so we can use threading for that
+in which background thread are working and also with this main thread also working and user can do otheractivties 
+while other request are processing in the other threads without interuptting the user we should never 
+block the UI thread and once the work of the thread get done we dont need to keep active that thread this can
+also be managed.
+the Android system is capable of running more than one thread at the same time, so that two or more sets
+ of tasks can be processed independent of each other. If there are many threads that need to be run, 
+Android also prioritizes which ones will run at what time and for how long.
+
+A thread also knows how to save its place. It records the values of all variables
+and remembers what series of function calls resulted in it getting to the instruction 
+it's currently executing: everything it needs to be able to pick up its work again.
+The goal of building any multithreaded application is to run two or more processes at the 
+same time. Modern programming languages and CPUs are designed to take advantage of multithreading,
+and building apps on the Android.
+
+and all this we can do with AsyncTask class (abstract)
+
+so in the mainthread we are doing our job and as the result get update in the background thread 
+we get updated result in main thread accordingly
+and we no longer need the background thread anymore
+threading is used to give high performance to the user app
+
+if we use asyntask class then we do the thing on a background thread whereas the ui is on main thread so 
+what we can do to interact all these
+background thread process with the mainthread is we use these methods inside background thread
+in which there is OnPreExecute() which execute before running background thread
+onPostExecute which run after the background thread finish its work
+and if we want to check the progress of background thread we can also call the OnProogressUpdate
+ which can be while backgorund thread is 
+executing.
+and there are also other different methods are there which we can call
+((((MAIN THREAD IS UI THREAD ))
+
+What an AsyncTask is its an abstract class which we have to implement
+so we have to extend it and make to other class and choose whatever name we can call it
+its syntax
+AsyncTask<Params,Progress,Result>
+example:and in the below example params are url progress is Integer and reuslt is Long 
+private class DownloadFilesTask extends AsyncTask<URL, Integer, Long> {
+     protected Long doInBackground(URL... urls) {
+         int count = urls.length;
+         long totalSize = 0;
+         for (int i = 0; i < count; i++) {
+             totalSize += Downloader.downloadFile(urls[i]);
+             publishProgress((int) ((i / (float) count) * 100));
+             // Escape early if cancel() is called
+             if (isCancelled()) break;
+         }
+         return totalSize;
+     }
+
+     protected void onProgressUpdate(Integer... progress) {
+         setProgressPercent(progress[0]);
+     }
+
+     protected void onPostExecute(Long result) {
+         showDialog("Downloaded " + result + " bytes");
+     }
+ }
+
+
+So from starting lets talk how we can configure a network request 
+1.In android manifest file we add internet permission
+2.then get and store in string the request url in which we have to send the http request 
+3.then after we crete asyntask class in order to run it on background thread to save memory
+4.now we have to create all the helpers method to createURL,makehttprequest,readfromstream .
+5.then we declare have to extract feautree from JSON from earthquake JSON string and return to our type which we 
+can use
+6.now finally first we create URL then make http request and store it in a string then from that string we can 
+extract our type from the JSONrespone string and return the our type need.
+
+now there are some limitation of asyntask that 
+is we rotate the screen then onCreate method get called and new activity class and asyncTask class
+make again and again and this cause wastage of memory because the work of activity get finished but
+as async is inner class it also have to finish inorder to finsh the whole process
+and if user repeat the process multiple time then we have lot of activty and asynctask get created and this cause 
+waste of memory 
+So saving from this we can use the concept of LOADERS
+no matter how many times we request data from a loader by default loader only fetch data once.and when
+a activty is shut down all its loader to quit since the data wont be used.
+
+so there are some methods which we have to implement inorder to use it
+initLoader() ->calls encusre  that a loader is initialized and active if it exist then last created loader is reused
+if it dont exist then it create a new loader using onCreateLoader().
+so if we rotate the device again and again same loader will be used instead of new one
+onCreateLoader->we need to create a new laoder (which will fetch the data from web server in our case)
+onLoadFinished->is called when the loader is finished loading data on the background thread this is where we can 
+change ui and upadte ui.
+onLoaderReset()->when previous created loader is being reset.so now old loader data is cant be used.
+loaders can handle device roation and activity cycle much better and saves memory and enhance performance.
+
+so we can change the methods name from doInBackground to loadInBackground and onPostExecute to onLoadFinished
+
+so what we have to keep in mind that we take all the scenario while building our android app.
+so in making this app particularly we also have to think that what if user have no internet connection so in every
+ app think of each and every scenario so
+that app can perform well in each situation handling each and every edge cases.
+
+A Fragment behaves a lot like a mini-activity that lives inside a proper activity.
+ Fragments were introduced as a way to make more flexible layouts for tablets and other Android devices
+ with large screens.
+
+
+Fragments can be reused inside multiple activities, and a single activity can make use of multiple fragments. 
+A very common pattern is for a tablet UI to use two fragments side by side.
+
+
+
+
+Data Storage->>
+so there are three options to save the data:
+1.Files->good for saving large media files
+2.SharedPreferences->good for in app user preferences
+3.SQLite Databases->good for organizing a lot of related and structed data for easy access it used for text data 
+nd this data is easy to use easily searchable.
+
+so diffrent apps use differnt forms to store the data for example camera app it stores all the pictures in file form
+and picture database in SQLite(time,location,description).
+
+SQLite is a local database to create a local database on the device our app interacting with
+there are many complex database software is there also such as MYSQL so we are not going to that point 
+at this point we want to save the data locally on our device and for that we use SQLite.
+
+so there are types in SQLite there are data types
+6 types integer INTEGER 
+storage class
+null->value is null
+integer->value is signed integer
+real->floating point
+text->string
+blob->data is stored exactly as we input it (eg.can be used for images or binaries)
+
+NO booleans we can use integer instead.
+
+three dots after a sql command means you have to type more inorder to complete the statement.
+
+what is contract class 
+1.define schema and have a convention for where to find database constants.
+2.when generating sql command remove possiblity of spelling error
+3.ease of updating database schema
+
+execSQL->this method should not be mix with any select statement becayse it dont return any data.
+
+Database connection so what our UI wants is to communicate with the database so first we make a helper object which 
+then call SQLiteDatabase reference which check for that database exsit then it use or not then it create it.
+getReadableDatabase get its refrence only to preexisting database.
+
+database query method 
+projection tell us which columns we have to select 
+selection tell us where command and which it to equal to
+selectionArgs tell us arguement we have to send for where clause
+and by using these we we call the db.query method which finally return the Cursor object
+And cursor is and object that reperesents a bunch of rows in a database.
+
+handling a cursor object
+moveToFirst->Moves the cursor to the first row thats in the result set
+moveToLast->move the curose to the last row thats in the result set
+moveToPostion->move the cursor to a specific position
+
+now afer going to that row we can take the coloumn values for our use.
+
+so first we go to row then we getColumnIndex for our desired column 
+then after getting getColumnIndex we pass it to getString to get our field
+
+and after use of it we have to close it using cursor.close() inorder to avoid memory leaks and poor performance.
+
+Content Provider:
+we can centralize the accessing and editing of the data via the content provider.
+
+so we check the value before going into database directly.
+its a layer of data validation
+CursorLoader queries the provider for pet data,automatically refreshes when data changes.
+
+Content provider manages access to a structured set of data.
+good abstraction layer between data source or ui code.
+works well with other android framework classes.
+can easily share data with other apps.(MAIN)
+structure if content uri
+scheme,content authority,type of data.
+there are two types of content uri first which work for all rows for a table and other one which work for
+single row in the table.
+
+How query get displayed to UI:
+first we call the method from our activity class then it go to resolver class then pet provider then URI matcher
+and it returns a Cursor object which we sent to pet provider then content resolver and then acitvity which than 
+finally get displayed to UI.
+
+Cursor loader ->that queries the content resolver with a specific URI and returns a cursor.
+
+Similar to network operations, data operations such as reading and writing to the pets table are expensive 
+and time-consuming, so are database operations. Currently we are performing the ContentResolver query on the 
+main thread in the CatalogActivity. But we don’t want to block the UI thread, so a loader allows us to do the
+ operation on a background thread.
+
+using a cursor loader
+
+so we implement LoaderCallbacks<Cursor>
+first we define onCreate method which creates the CursorLoader and in doing so,defines the data that we want to
+query from the content provider.
+onLoadFinished()->is called when the loader has finished loading the data and has Cursor.
+onLoaderReset()->is called when the current Loader is being destroyed and the data in the most recently provided
+cursor is invalid.
+
+So what SQLitehelper class do for us
+1.it create a SQLite database when it is first accessed.
+2.give you a connection to that database if already exist
+3.manages updating the database schema if version changes.
+
+So in order to create it.
+1.create class that extend from SQLiteOpenHelper
+2.create constant for database name and database version
+3.create a constructor
+4.implement the onCreate() method- this method is for when database is firstly created.
+5.implement onUpgrade()->this method is for when the database schema of the database changes
+
+
+SQL NEW START AND LEARN_______________________-------------------*********
+so for that we define a contract class in which all the constants are there 
+and the reasons why we need contract class is:
+1.Define schema and have a convention for where to find database constants.
+2.when generating sql commands,remove possiblity of spelling erros.
+3.Ease of updating database schema.
+in contract class we define the constant or the coloumn attribute that we have to use in our sql table and use
+by this class further in our code only.eg.Petentry.COLOUMN_MALE;
+
+so where we now create this data classes its in new packages because there are lot of data specific
+functionality we have to add so we make a new pacakage for it and then use it.
+and then we made contract class
+
+So android provide SQLiteOpenHelper class that help manage open and create connections.
+public void execSQL (String sql)->Execute a single SQL statement that is NOT a SELECT or any other SQL 
+statement that returns data.
+now in this method sql string that we send give to this function is our statement that we wanna execute which dont
+return anything and it uses contract class constant heavily.
+then we write the oncreate and onupgrade method fully (sqlitehelper)petdbhelper
+
+For example if our editor activity or catalog activity ask for a readable database to petdbhelper class
+if database not exist then it call on create method and create a new database shelter.db 
+if database already exist then it make instance of SQLitedatabase which contain old created database.
+
+
+for inserting data in our database what we have to do is first create a content value object 
+ContentValues values = new ContentValues();
+values.put(PetEntry.COLUMN_PET_NAME, "Garfield");
+values.put(PetEntry.COLUMN_PET_BREED, "Tabby");
+values.put(PetEntry.COLUMN_PET_GENDER, PetEntry.GENDER_MALE);
+values.put(PetEntry.COLUMN_PET_WEIGHT, 7);
+db.insert(PetEntry.TABLE_NAME, null, values);
+this create a content value object than by using insert command we insert it into our database
+db.insert(table_name,NULL,values);
+
+
+just like we declare styles,strings,arrays in res folder 
+we also declare the menu for an activity
+
+showAsaction attribute in menu field for an item told us it come with icon into a field or it should be in overflow
+menu.
+and in java file as it get inherit appCombatactivity it comes under it and we inflate the menu item 
+and using id attribute we add functionality of an click than we want to achieve.
+
+so now how we get data from editor activity is first we trigger when save button is pressed.
+get all the data from the edittext fields
+save them in content value object and then insert that conent value object in our database.
+
+We take it with EditText method and change gettext toString and get it accordingly
+
+and then we have to check that if button get trigger we save pet to the database. in onoptionItemSewlected method.
+
+and we also add onStart() method so that each time activity get start it shows the latest result.
+String nameString = mNameEditText.getText().toString().trim(); //this is how we get the field from edittext field.
+and then we put into a content value object
+ContentValues values = new ContentValues();
+        values.put(PetEntry.COLUMN_PET_NAME, nameString);
+        values.put(PetEntry.COLUMN_PET_BREED, breedString);
+        values.put(PetEntry.COLUMN_PET_GENDER, mGender);
+and than finally we add it to the database
+long newRowId = db.insert(PetEntry.TABLE_NAME, null, values);
+and show the row id accordinly as it return row id.
+is row id is -1 then error else success.
+
+now we want to fetch the data from the table so for that we use the concept of cursor
+String[] projection = { PetEntry.COLUMN_PET_BREED,
+       PetEntry.COLUMN_PET_WEIGHT };
+String selection = PetEntry.COLUMN_PET_GENDER + “=?”;
+String selectionArgs = new String[] { PetEntry.GENDER_FEMALE };
+
+Cursor c = db.query(PetEntry.TABLE_NAME, projection,
+       selection, selectionArgs,
+       null, null, null);
+
+And cursor is and object that reperesents a bunch of rows in a database.
+
+public Cursor query (String table, 
+                String[] columns, 
+                String selection, 
+                String[] selectionArgs, 
+                String groupBy, 
+                String having, 
+                String orderBy)
+handling a cursor object
+moveToFirst->Moves the cursor to the first row thats in the result set
+moveToLast->move the curose to the last row thats in the result set
+moveToPostion->move the cursor to a specific position
+
+and all these return us either true or false which we can use accoringly and move the cursor object
+
+and at the last we have to close the cursor because it cause memory waste.
+
+what we are doing now we have to read value from the cursor
+now we keep moving next to the cursor and putting keep appending displaying and until whole table get out.
+
+while (cursor.moveToNext()) {
+                // Use that index to extract the String or Int value of the word
+                // at the current row the cursor is on.
+                int currentID = cursor.getInt(idColumnIndex);
+                String currentName = cursor.getString(nameColumnIndex);
+                String currentBreed = cursor.getString(breedColumnIndex);
+                int currentGender = cursor.getInt(genderColumnIndex);
+                int currentWeight = cursor.getInt(weightColumnIndex);
+                // Display the values from each column of the current row in the cursor in the TextView
+                displayView.append(("\n" + currentID + " - " +
+  currentName + " - " +
+                        currentBreed + " - " +
+                        currentGender + " - " +
+                        currentWeight));
+            }
+where display view is A textView object for viewpet.
+
+So now we dont want to interact direcly to database with the activity class so now we use content provider
+which act as layer between both.
+in old way catalog and editor directly interacting with petdbhelper that is database
+and this can introduce bugs in our code.
+so we centeralize the accesing and editing of the data via the contenet provider.
+it add data validation in content provider. which dont allow to add invalid data.
+and then ui code is directly interacting with content provider
+content provider manages access to a structured set of data
+good abstraction layer between data source or ui code can add data validation can modify how data is stored and ui
+code is unaffected.
+when our pet get added or deleted from the list the list get upadted via cursor loader.
+ListView and cursor adapter(Cursor LOader).
+content provider work well with other framwork classes.
+cursor loader querired the provide for pet data that directly automatically refreshes when data get changes.
+
+data is private to each app now via content provider we can share the data with other apps but we have to give 
+proper access permissions required.
+so it can easily share the data with other apps accordingly with the demand.
+
+so for example we have contact app in our phone now we have contactsdatabasehelper now we use content provider to
+share the data of the contacts with the other apps that need the data so other app interact with the content provider
+and data get share easily.
+now A content URI was sent so that we can fetch our required data.
+so now content uri then content resolver check which provider should handle a request.
+so proper content authority is there in content uri written and we resolve it properly.
+
+so as summary our
+contacteditoractivity->content resolver->content provider->database
+
+when talking to provider we need to tell it two things first that what actions we are taking 
+query insert update delete
+and second what data are you performing the action on whole table or a single row.
+
+first comes uniform resource identifier nd under these url comes uniform resource locator
+
+all content uri comes three types.
+structure if content uri
+scheme,content authority,type of data.
+content authority->unique for each content provider usually the app package name.
+and last is type of data which is usually table name.
+and after that we have last part is its ID which refer to the single row of the table.
+when all rows of table we dont mention the id.
+
+public static final String CONTENT_AUTHORITY = "com.example.android.pets";
+ public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+ public static final String PATH_PETS = "pets";
+
+after pet provider our URI matcher is there which have two paths one is it get perform on the whole table
+and other path is that on a single row of the table.
+
+if have a uri matcher where a hash can be replace with a integer 
+and a astric symbol replace with the string
+
+URI matches a uri with an integer code.helps us ensure that the content provider does not try to handle unexpected 
+content URI.i.e content/contacts/asfawanz like
+
+so how we use uri matcher in content provider is 
+1.setup the urimatcher with the uri patterns your content provider will accept and assign each pattern on integer
+ code.
+2.call UriMatcher.match(Uri) and pass in a uri which will return the corresponding integer code(if it matched a valid
+pattern) or will tell you there is no match.
+and this is how we make uri matcher;
+
+private static final int PETS = 100;
+private static final int PET_ID = 101;
+private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
+// Static initializer. This is run the first time anything is called from this class.
+static {
+   sUriMatcher.addURI(PetContract.CONTENT_AUTHORITY, PetContract.PATH_PETS, PETS);
+sUriMatcher.addURI(PetContract.CONTENT_AUTHORITY, PetContract.PATH_PETS +"/#", PETS_ID);
+}
+Implement query method->
+catalog activity->content resolver->petprovider->uri matcher->query pets table(return cursor object)
+public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
+                    String sortOrder) {
+    // Get readable database
+    SQLiteDatabase database = mDbHelper.getReadableDatabase();
+
+    // This cursor will hold the result of the query
+    Cursor cursor;
+
+    // Figure out if the URI matcher can match the URI to a specific code
+    int match = sUriMatcher.match(uri);
+    switch (match) {
+        case PETS:
+            // For the PETS code, query the pets table directly with the given
+            // projection, selection, selection arguments, and sort order. The cursor
+            // could contain multiple rows of the pets table.
+            // TODO: Perform database query on pets table
+            break;
+        case PET_ID:
+            // For the PET_ID code, extract out the ID from the URI.
+            // For an example URI such as "content://com.example.android.pets/pets/3",
+            // the selection will be "_id=?" and the selection argument will be a
+            // String array containing the actual ID of 3 in this case.
+            //
+            // For every "?" in the selection, we need to have an element in the selection
+            // arguments that will fill in the "?". Since we have 1 question mark in the
+            // selection, we have 1 String in the selection arguments' String array.
+            selection = PetEntry._ID + "=?";
+            selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+
+            // This will perform a query on the pets table where the _id equals 3 to return a
+            // Cursor containing that row of the table.
+            cursor = database.query(PetEntry.TABLE_NAME, projection, selection, selectionArgs,
+                    null, null, sortOrder);
+            break;
+        default:
+            throw new IllegalArgumentException("Cannot query unknown URI " + uri);
+    }
+    return cursor;
+}
+
+now for insert method what we do->>
+Editor activity->Content Resolver->Pet provider->URI matcher->insert new row in pets and this return back a URI
+and in the same way we insert a pet data using insertPet method in both the java classes editor as well as catalog
+Uri newUri = getContentResolver().insert(PetEntry.CONTENT_URI, values); //where values are a content value object
+
+and also we need to add data validation in our code so that incorrect data was not able to insert in the table 
+so we manage it by try catch throw blocks and we can send the exception and handle it properly if data get
+insert wrong.
+String name = values.getAsString(PetEntry.COLUMN_PET_NAME);
+    if (name == null) {
+        throw new IllegalArgumentException("Pet requires a name");
+    }
+
+if (weight != null && weight < 0) {
+      throw new IllegalArgumentException("Pet requires valid weight");
+  }
+in this example our name cannot be null ,breed can be null,gender cannot be null and weight cant be negative so all
+these we have to handle using throw blocks.
+
+there is sample use case that how all these manages:
+URI: content://com.example.android.pets/pets/
+ContentValues: name is Milo, breed is French bulldog, weight is 20
+Selection: “name=?”
+SelectionArgs: { “Toto” }
+and this means SQLite statement: UPDATE pets SET name = ‘Milo’, breed=’French bulldog’, weight=20 WHERE name=‘Toto’
+
+Adapter is responsible for making alist item view for each item in data source.
+so list view keep requesting list items for each position until there are no more pets in the curosr or until the
+screen is full.
+
+and we need our own custom cursor adapter class
+
+so we dont perform any long running operations on the main thread
+
+Curosr loader->loader that queries the content resolver with a specific URI and return a cursor.
+
+so what we do we loads data on a background thread because reading and writing to a database can be a expensive 
+operations.
+
+when the underlying data changes we can automatically refresh the loader to query the data source again with the 
+same URI.
+here are two things that you need to keep in mind for understanding the CursorLoader:
+
+It loads data on a separate thread.
+
+It monitors the underlying data source for updates, re-querying when changes are detected.
+
+CursorLoader queries the provider for pet data automatically refresh when data changes.
+Cursor loader ->that queries the content resolver with a specific URI and returns a cursor.
+
+Similar to network operations, data operations such as reading and writing to the pets table are expensive 
+and time-consuming, so are database operations. Currently we are performing the ContentResolver query on the 
+main thread in the CatalogActivity. But we don’t want to block the UI thread, so a loader allows us to do the
+ operation on a background thread.
+
+using a cursor loader
+
+so we implement LoaderCallbacks<Cursor>
+first we define onCreate method which creates the CursorLoader and in doing so,defines the data that we want to
+query from the content provider.
+onLoadFinished()->is called when the loader has finished loading the data and has Cursor.
+onLoaderReset()->is called when the current Loader is being destroyed and the data in the most recently provided
+cursor is invalid.
+
+
+
+
+ANDROID COURSE -> DEVELOPING ANDROID APPLICATIONS:
+1.Apps are collection of connected components.
+2.Activity are responsible for creating the window that your application uses to draw and receive events from the
+system.
+Its like a stack we we press the back button it loads the activity that are before the activity running or at last
+launcher.
+
+Activity is an Android Component and responsible for displaying the application user interface.
+ The rest are also part of the framework. Services and Content Providers are both core Android components. 
+Layouts and Windows are both involved with displaying the user interface.
+
+An activity is a single focused thing that the user can do. Activities are responsible for creating the 
+window that your application uses to draw and receive events from the system
+
+An activity creates views to show the user information, and to let the user interact with the activity.
+are responsible for drawing and handling events
+
+wrap_content will shrink the view to wrap whatever is displayed inside the view.
+match_parent will expand the size of the view to be as large as the parent view which it is nested inside of.
+
+The difference is that padding determines space within the boundaries of the view, 
+and layout_margin determines the space outside the boundaries of the view
+
+When your application is compiled the R class is generated. It creates constants that allow you to
+ dynamically identify the various contents of the res folder, including layout
+
+setContentView->inflates the layout
+The difference between setText and append is that setText overwrites 
+what was in the TextView, while append simply adds text onto whatever text was already there.
+
+So first what we do is we have git hub query methods url so we want to build URL so that we can
+ set up a http connection
+and recive the information so for that we 
+first we have to build URL so inorder to do that we use URI class in send appropriate paramaters in build function
+and also appends additional search like sort etc. it then we get proper uri for that
+now we convert that uri to URL by passing it in URL class constructor in string format
+thats how we get our URL for git hub query.
+Now after we get our URL now we need to set up a HttpURLConnection and  than we first we 
+setup a request method..using  openconnection
+than after recive it in InputStream class object than we use scanner class.
+
+the code allocated and deallocated the buffer as needed and handles character encoding.UTF-8 to UTF-16
+
+When talking about permissions application have there own data and it can use the other resource of the mobile
+device only by permissions so that it dont perform actions which could adversely affect other apps or user
+personal information thats why we need to ask permission for a thing inorder to use any resoruce of the device.
+
+and for settting up all these permissions we declare all of in android manifest file.
+ 
+so in later version of the android many permission are granted without the need of dialog while some important 
+permission dialog box appear and confirm with user to use it or not.
+
+the best thing is that we take minimum number of permission in order to make to the app so that user dont sopasticate
+every time dialog appear. and use other alternative if possible rather than asking permissions.
+so we can use intent also rather than asking permission each time for example codetantra send intent to camera 
+and take picture in behalf of it without using full permission of the camera app.
+
+Remember Android throws an execption when we try to access internet on the main thread.
+So each android app is divided into multiple threads of execution and all run concurrently.
+and these threads of execution can be scheduled by the OS.
+
+And Android apps have a single user interface thread and on these threads things are going to run very fast in
+milisec so thats why when we try to do the network request on main thread it take couple of seconds so our app
+can be forzen and ui get block if the networking call on main thread.
+So we need a different thread for networking call and for that we use AsyncTas which allows us to run a task
+on a background thread while publishing result to the UI thread.
+So AsyncTask is a generic class
+and it have three primary function we can ovveride in this
+Params:Parameter type sent to the task upon execution
+Progress:Type published to update progress during the background computation.
+Result:The type of the result of the background computation.
+AsyncTask is a useful abstraction for threading
+
+So first we have our MAIN/UI thread first of all we have onPreExecute method which run on Main/UI thread
+before our main work we can do anything here then after it goes to Background thread doInBackground method
+get call in which our main work happen on this different thread our request get process for long time 
+and we can public the progress on UI thread also using publicProgress method then after when the task
+get finish the result get return to OnPostExecute it get call after the work is done.
+
+JSON in android:
+first is we initialize a JSONObject from JSON string
+JSONObject contact=new JSONObject(contactJSONString);  
+ than we can fetch the data from it like
+JSONObject name=contact.getJSONObject("name");
+String firstName=name.getString("firstName");
+or String title =contact.getString("title");
+
+Recycler View:
+Into the ui of the app there are lot of images text written so its good for a small app but for a large app
+with lots of text and images its very memory consuming to handle interactions click handlers and this delay
+user exerprience of are app and app crashes in some cases as app run out of the memory to handle all these
+chunks.so we keep some in a queue or recycling for reuse and when we scroll out the recycler view return one of
+these previously created list item to us.views that are scrolled out are then placed back into the queue for reuse.
+
+so how do we use
+recycler view has a adapter so that is used to provide the recycler view with new views when needed.
+and that adapter also used to bind data from some data source to the view.and now adapter send the object
+to the recycler view in form a view holder object view holder contains a reference to the root view object for
+the item.find view by id is expensive so its get called only for when new item is created
+not each time you want to populated the view in the item with data.
+And than our layout manager finally told recycler view that how to layout all those views in which way.
+can be vertical scrolling horizontally etc.
+
+the adapter is called by the recycler view to create new items in the form of viewholders,populate the items with
+data and returns information 
+we need to ovverride three methods for these 
+1.OnCreateViewHolder which inflates the item view from XML,creates them in code and return a new ViewHolder object.
+after each ViewHolder is created the Recycler View will call onBindViewHolder to populate each item with data.
+and when we scroll the recycler view will reuse those viewholders asking the adapter to bind new data to them.
+
+The adapter does create ViewHolder objects and inflates item views in its onCreateViewHolder function,
+ it also returns the number of items in the data source, and binds data from the data source to each item
+ (even if we pass the responsibility to the ViewHolder). It doesn't cache views associated with 
+each item (that's the job of the ViewHolder class) nor does it recycle them; that’s what our RecyclerView does.
+
+Viewholder determines how an individual entry is displayed and the layout manager determines how the collection
+of items is displayed it determines when to recycle items view that are no longer visible to the user they are
+of three types LinearLayoutManager(Vertical),GridLayoutManager(Both vertical and horizontal)
+,StaggeredGridLayoutManager(Varying dimension)
+and we can create for own also.
+
+RecyclerViews make easy to handle clicks on items
+first we implement a interface that define our listener and there we implement a method when a item is clicked then
+using its reference variable(static final) and into our green adapter constructor we take a parameter and initialize
+this variable.
+and now we change the number of view holder to implement View.OnClickListener and there we ovverride the onClick 
+method and get the clicked position and send to the method we define in the interface.
+
+Recycler view->
+view group to display large set of data for each item in large dataset it displays a view efficient way to
+implement scrollable list.
+ViewHolder->this will hold the view and helps in recycling
+Adapter->this will adapt our data so that it can be displayed in a list.
+So lets see how to implement all these
+first we create a xml file in which its type is recycler view and we give it a id.
+than in our main activity we find this view by id and store it in a reference of recycler view variable.
+then we create our adapter which use to adapt the data 
+now we create a adapter class for it and into this a nested class for view holder also
+than we take paramter into constructor and initialize our data field with the help of this constructor.
+the data can be of any type string array etc.
+and within this class we have to implement three method 
+
+1.oncreateviewholder->it basically create the view and put in it into the viewholder and store it.
+and how this view are created ->we use layoutinflater class which return a view object 
+and then we create a view with the help of this by infalting and passing our own layout id and then we return
+it finally by passing this created view in the constructor of programming view holder class.and in the
+constructor of view holder class we assign propely to our class data with this passed data.
+it get call only in starting not with scrolling
+
+2.onbindviewholder->it do data binding with our data after view creation and store 
+we set data to our view holder with the positon it calls when user scroll the screen
+how we get our data with the help of positon variable and set to to our holder variable using set text.
+
+3.getitemcount->return number of item
+and setting on click on it is easy into our onbindviewholder method with the passed paramter holder reference 
+we call set on click listener and than implement on click method easily with our own choice.
+
+
+Intent let an app request that an action take place it can be anything like displaying photo,phone call,start new 
+activity,intents are like envelope can package bits of information we want the new activity to have
+
+Now how we pass data between two activity as intent is like envelope and we can put information into this envelope
+so for this we use method putExtra with the intent that we are making and pass the message as key value pair
+then for opening this message we use method getString extra inorder to open the envelope message and this method
+take the key and return as the value and we store it and use it furtherly.
+This is explicit when we known which acitvity is going to handle my request how and when but if we i dont known
+which thing is going to handle my intent than its called implicit intent where we send the intent and it get
+fulfil by other apps that are present in android device for that particular app for example sending intent for message
+and gmail,telegram,whats app all the app that can able to send a  message to other handle this request
+
+URI->uniform resource identifer is a string of character that identifies a resource formal name of a web address is
+a URL or Uniform Resource Locator.A URL is a URL that identifies a web or network resource.
+A URI is an identifier of a specific resource. Like a page, or book, or a document.
+A URL is special type of identifier that also tells you how to access it, such as HTTPs,
+ FTP, etc.—like https://www.google.com.
+URI that specify the location=URL
+URI that specift the Name=URN
+
+The components of the URL are combined and delimited as follows:
+scheme://host:port/path?query
+
+Android lifeCycle:
+device orientation and screen width can change at runtime so the default behaviour is that recreate android
+ activities
+whenever a device configuration changes.
+
+Bundle is a key value storage mechanism that we use to store the data we want to be saved bundles need to be passed 
+between processes or serialized to a file.they support a limited set of types.the parcelable effectively contains
+the instructions for how to output an object to a strean of data and then recreate the object from that stream.
+Android Bundle is used to pass data between activities. The values that are to be passed are mapped to 
+String keys which are later used in the next activity to retrieve the values.
+
+Parcelable is an Android only Interface used to serialize a class 
+so its properties can be transferred from one activity to another.
+The Parcelable interface adds methods to all classes you want to be able to transfer between activities. 
+These methods are how parcelable deconstructs the object in one activity and reconstructs it in another.
+
+Android will kill background application as needed and our app should be ready for this.Android kill the application
+under extreme memory pressure.Android kills background app in some cases so that foreground apps can continue to run
+so when our app is going to kill under background we have to free the resource properly like removing opening 
+connection or sockets.
+
+Loader provide a framework to perform asynchronous loading of data
+implementing loader is easy in three steps:
+1.Create a Loader ID
+2.Fill in Loader callbacks.
+3.Init Loader with LoaderManager.
+
+Loaders are tied to the application lifecycle they automatically handle changes in configurations such as rotation
+they are designed to reload if the user navigates away from the activity nd returns
+
+Data persistence in android its like saving some data to the phone there are five ways
+1.Bundle using save state with key value pairs to store the state of one of the views used to save the state
+during thing like app rotation or memory fail.its a temporary place to store the state of an app.
+2.For permanent we use file system in which first is SharedPreferences which is key value primitive values
+store in a file which save even app and phone restart its used for like a game player information,lost
+web page in a internet app.
+3.Its also permanent in which we use SQLite database for more organized and complicated data which cant
+be old by just key value pair.its also remain conserve even after app restart or phone 
+4.Then we can save the data in the internal and external storage of the phone it is useful for multimedia or larger
+data and data remain conserve even after app restart and phone
+5.Then at last we can save the data on cloud the data that multiple phone will access in which we use google
+firebase used in gaming where we have to store the information about different players
+
+Shared prefrence used for saving app setting permanently thats its there main purpose to save user prefrences
+and for that we use class preference fragment
+
+A fragment is a class that represent a modular and reusable piece of an activity.
+so all these prefrences are saved in sharedprefrence file and we can change the data in it and if we want to read 
+form it we can do it that also.
+
+Now for making shared preference for our setting menu.first we make a menu file for this and connect to other activty
+which is our setting activity to show the setting page now on the setting page we make a fragment layout on setting
+page and assign it a id.
+now we add the prefrence xml file to store the prefrence of the setting page and we show this within on create
+method of setting activity addPrefrencesFromResource.
+and we can add required number of prefrence in pref xml file which is preference screen type
+
+in setting up the shared preferences so that the affect of the shared prefernces able to apply on the app .
+now how we read the data from this prefrence screen we create sharedPrefrence object then we get the 
+the type result using get methods passing the key and default value and this give us the result of what prefrence
+user choose
+But now the shared prefrence setting dont apply when we navigate back to the activity this is because it get update
+when onCreate method get called and it only call when we open app or rotate the app.
+So to update it as it get change we use PrefrenceChangeListener.
+there are some steps which we take
+
+1.Determine Activity
+2.Implement OnSharedPreferenceChangeListener
+3.Then we have to link the listener to our SharedPreferenceFile
+4.CleanUp that is we have to unregister the listener when the activity is shutDown
+
+We can also use ListPrefrence in pref_visualizer.xml inn which we have to give some key and as well as label as 
+array time so we have to create a array.xml file also if we want to use ListPreference.
+
+One more preference type is there is of Edit text preference where we can store a string number float and use
+it in setting
+but it can be happen that the user put invalid data type in edit text field of setting so for that we use preference
+changeListener
+
+SharedPreferenceChangeListener is triggered after any value is saved to the SharedPreferences file.
+PreferenceChangeListener is triggered before a value is saved to the SharedPreferences file. 
+Because of this, it can 
+prevent an invalid update to a preference. PreferenceChangeListeners are also attached to a single preference.
+
+flow goes like this:
+
+User updates a preference.
+PreferenceChangeListener triggered for that preference.
+The new value is saved to the SharedPreference file.
+onSharedPreferenceChanged listeners are triggered.
+
+Content provider is a class that sits between an application and its data source and its job is to provide easily 
+managed access to the underlying data source.
+
+Why we use Content provider is As an extra level of abstraction allow developers to change the underlying data
+source without needing to change any code in the applications that access the content provider(Easily change 
+underlying data source
+2.Leverage functionality of android classes eg.Loader,Adapter
+3.Main reason is to allow many apps to access,use and modify a single data source securely
+and we we dont use content provider the data is limited to the app itself its a single class with which the help 
+we share the data securly nd easily and protect your data as needed
+For example i a buisness card sharing app we have to store the card information contact detail so instead of making
+local database for the app we store the data in phone default contacts app and we can use it further there.
+
+So to use content provider we have to follow some steps :
+1.Get permission to use the content provider
+2.Get the contentResolver
+3.pick one of four basic actions:query,insert,update,delete
+4.Use a Uri to identify the data you are reading or manipulating
+5.In the case of reading from the content Provider,display the inforamtion in the UI.
+
+So why we use content resolver is it acts as an intermediary between each app and the content provider or provider
+it want to access it handles inter process communication and keeps everything in sync and running smoothly.
+Content Resolver resolves a URI to a specific Content provider.it accepts requests from clients, and resolves these
+ requests by directing them to the content provider with a distinct authority.
+To do this, the Content Resolver stores a mapping from authorities to Content Providers
+ it allows a simple and secure means of accessing other applications’ Content Providers.
+Content Provider provides an interface to query content.
+
+So what we do first we get Content resolver in its object then after we call the query method with the help of this
+variable eg.
+ContentResolver resolver=getContentResolver();
+Cursor cursor=resolver.query(...);
+where a content resolver is make of three types:
+1.Content Provider Prefix
+2.Content Authority
+3.Specific Data
+
+So this take long so we have to make database operation call on background thread.
+The best way to asynchronously load data from any ContentProvider is with a CursorLoader.
+A CursorLoader is a subclass of AsyncTaskLoader that queries a ContentProvider, 
+via a ContentResolver and specific URI, and returns a Cursor of desired data. 
+
+Android Architectire componenets:
+
+They are set of rules which is provided by google which we can follow and the quality of the app is at the best
+robust,industrial types,scalable etc. so we must have to use them.
+
+We have to make our apps modular so a code is easy to maintain and reuse and reduce something like memory leak etc.
+1.Room:A new SQLite object realtional mapping libary
+2.Live data to observe changes in the database.
+3.View model to cache data that needs to survive to configuration changes.
+4.LifeCycle to allow nonlifecycle object to be lifecycle aware.
+5.WorkManager
+6.DataBinding
+7.Navigation
+
+In new era we use rooms which is wrapper of sqlite in this we can create tables and can store the data 
+in room its(entity) in sqlite its table
+into ->multiple entity we can create coloumns 
+and we access it through DAO
+ 
+A Repository class abstracts access to multiple data sources. The Repository is not part of the
+ Architecture Components libraries, but is a suggested best practice for code separation and architecture
+
+The ViewModel's role is to provide data to the UI and survive configuration changes.
+ A ViewModel acts as a communication center between the Repository and the UI.
+
+
+
+Room is an ORM that is an object realtional mapping libary it will map our database objects to java objects.
+Feautures of Room are:
+Less boilderplay
+SQL validation at compile time
+Built to work with live data and Rx java for data observation
+It has three main component 
+1.Entity to define our databse tables.
+2.DAO to provice an API for reading and writing data.
+3.Database which represent a database holder
+
+So for adding room
+first we add the implemenation and dependencies in the build gradle file then we put entity tag at the top
+of the class ..its not good that the name of the database table and java class is same ..so we give proper
+name to the table rather than leaving it to the class name.
+one more requirement for room is to define a primary key just put attheret sign over the primary key 
+and we can also put autogenerate so that we dont have to give primary key value by self it generate automatically.
+Limitation of room is that we only have to use one constructor.
+and as we use autogenerate command over a value for eg. ID then it will be auto generated whenever we add a new 
+task....We can add ignore annonation(notation with @ so that the method get ignore )
+
+We have a interface dao in which all the methods Query,insert,update,delete and we use proper annonation for
+each one so that we can use them properly.
+its a object relational mapping libary query method just query the all table
+but other take a object in there parameter for implementing(insert,update,delete).
+DAO(Data Access Objects) are the main classes where you define your database interactions. 
+They can include a variety of query methods.
+
+Singleton pattern is a software design pattern that
+restricts the instantiation of a class to one object this is useful when we want to ensure that only one object
+of a given class is created.and to do so we create a private static variable of the same class
+and whenever we create a new object of the class we check that variable is null or not
+if its null that we have to create the object and if it isnt then we dont create the object 
+
+Rooms needs to map each of our field to one of these datatypes string and numbers are okay but room cannot 
+automatically map more complex extractors like dates.
+so we need proper convertor class or methods in order to change its type propley and our code can run without any 
+warning ...Room use this method when writing into the database.and we add the annonation at the top of the class
+that where is the class to convert complex type with annonation (@TypeConverters).
+
+Accessing the database in the main thread can be time consuming, and could lock the UI and throw an Application
+ Not Responding error.To avoid that, Room will, by default, throw an error if you attempt to access 
+the database in the main thread.
+
+Now how we store the data in the database first we have to create a instance of our database class than 
+initialize it by getinstance method then after we get the field that are required to make the database 
+and create instance of that class that we want to put the data sending proper parameter to the class and
+make a object to put into our database then finally we put the object created into our database using taskDao method
+insert command sending object in paramater.
+mDb = AppDatabase.getInstance(getApplicationContext());
+String description = mEditText.getText().toString();
+int priority = getPriorityFromViews();
+Date date = new Date();
+TaskEntry taskEntry = new TaskEntry(description, priority, date);
+mDb.taskDao().insertTask(taskEntry);
+finish();
+
+this is done in database creation class but 
+into our main activity class where are actual data get shown on UI from the database
+we dont have to create query method in onCreate method because it will never be refereshed unless our activity
+is recreated so we have to put query method in onResume method.
+
+So the database operation can block the main thread that is UI so this all operation should be done on
+other thread asyncronously.
+so instead of making new thread each time for each databse call we do all database operation on a single thread 
+and it will ensure that our calls are done sequentially.
+
+Executor->An executor is an object that executes a submitted runnable tasks its normally used instead of explicitly
+creating threads for each of a set of tasks.
+We use single thread executors sometime so that which ensure that our database transactions are done in order
+and so that we dont have race conditions.
+
+Into this system we are querying the data whenever onResume get called and this is inefficient because database is
+not changing and we are reterive the database again and again so for that we use LIVE DATA 
+
+LiveData sits b/w our database and our UI live data is able to monitor changes and notify the observers when
+data changes.
+
+Observer pattern is most common pattern the classes called observers subscribe to what we call,the subject(in this 
+case live data object) will keep a list of all the observers that are subscribed to and notify all of them when
+there is any relevant change.
+There is one more advantage of live data that it by default run on other thread than main thread and we can avoid 
+executor
+
+For example when loading a single task for update in that case we dont need any type of update when it changes
+calling onChanged method so what we do inside our onChanged method we remove the observer.
+
+But now as we rotate the device and restart the app onCreate method get call and this cause to Make live data object
+again and again and this is not good ...
+
+and here comes our ViewModel->ViewModel allows data to survive to configuration changes such as rotation its 
+lifecycle scope is till the activity is created to till the activity is destroyed so when activity is rotated 
+it will use the exact same ViewModel object where we already have our cache data but one more thing we have to
+keep in mind that memory leak can also happen if activity is destroy.. so we call asynchronously from view model
+and its the best and we are no worry about memory leaks.
+If the activity is started or resumed then it consider active and only in this case its observers will be notified.
+One more benifit of live data is that whenever activtiy get destroy it unsubscribe the observers for us to avoid
+memory leaks.
+Lifecycle object will allow non lifecycle objects to be lifecycle aware it has two interfaces lifecycle owner and 
+lifecycle observer.
+Life cycle owner :Objects with lifecycle like activity and fragments.
+LifecycleObservers:Observe life cycle owners and get notified on life cycle changes.
+We could improve our architecture by extracting all that logic to a common place, or Repository. 
+This way, all database-related operations
+can be handled from a single location, while being accessible from anywhere in our app.
+
+LiveData is lifecycle aware component thats why main activity Live data component get updated even its not on screen
+and we are on other screen thats the best thing about it.and one more as the best thing about lifecycle aware 
+component is that its data get free and prevent memory leaks (Live data is lifecycle aware comp.).
+
+
+Background TASKS:
+The best thing of android is of any app to run in the background and we have to very conscious of how its consuming 
+resources of device and we need to known about two more android component Services and broadcast reciever.and Jobs
+
+Services are android framework component meant for running background tasks that dont need a visual component.
+And this do not provide user interface a activity can start a service which will continue to run even after 
+the activity is shut down.Example of this is that we get notification of email,date reminder message because
+these services are running on background even the application is closed.
+
+So when we should Loader and when services:
+Loader:if the background task is loading information that will only be used in the activty 
+Tied to the activty Lifecycle and easy to make user interface changes and communicate with activity
+
+Service:When the task that we are doing is decoupled from the user interface.Exists even when there is no user
+interface.(We need to process in a way where the end result will not directly affect the UI.
+
+Ways to Start a service:
+1.Start
+2.Schedule
+3.Bind
+->startService()->start from a activity but no direct communication back
+
+Service can be both STARTED OR BOUND
+
+Background service for downloading data immediately when location changes.
+Job service for downloading up to date weather data
+
+The lifecycle of service is different:
+first we call startService() this start the service:
+than onCreate->onStartCommand
+now in onStartCommand we start the asynctask and service run on background service running
+then in stopSelf->the service is stopped by itselft or a client.and this call on destroy and service 
+will be destroyed
+Base service class run on main UI thread and it will block UI if we run a long running task.
+
+IntentService is a service that actually runs in a separate background thread altogether first what we do
+in our class we extend it from intent service class then we specify what the intentservice should do in background
+by overwriting the onHandleIntent method inside onHandleIntent there we put the code that will run in the background
+
+So in summary we start the service using intent then it call onHandleIntent then background work done there and
+it stop itself when its done.
+The intent that we use to start the service is the same intent that is in the parameter of onHandle intent
+so we can attach extra data in intent ...and one more thing all these intent request make on background thread
+without blocking main thread UI
+
+<plurals name="charge_notification_count">
+   <item quantity="zero">Hydrate while charging reminder sent %d times</item>
+   <item quantity="one">Hydrate while charging reminder sent %d time</item>
+   <item quantity="other">Hydrate while charging reminder sent %d times</item>
+</plurals>
+
+Notification used to notify users of background updates even after app closed.its a standardized shortcut to interact
+directly with apps in a lightweight way.but we have to keep in mind that only important notification are to be there
+because user can easily disable the notification permanently so we use only useful notification only
+
+Pending intents:Intent allow the app to launch various activity within same app or launch other application 
+explicitly or implicitly using URI's.Launching other app or service from own application required proper 
+permission in android manifest file any notification is displayed by a system service (Notification Manager)
+A system service is a service that starts by the android system itself so to add our application in system service
+manifest file we cant do this so thats why we use pending intents ... Pending intent is a wrapper around a regular
+intent and it is designed to be used by other application the pending intent gives abilty to perform the action 
+in the other application as it is you application  
+so we use PendingIntent class and its instance can be creted by four methods getActvity,getactivities,getBroadcast
+getService with four parameters contexxt,requestcode,intent,flags.
+
+in android manifest file if we set launchMode to singleTop then it assure that no new application is launced if 
+its already running and running application get launced if we try to launch it...
+
+So what we do to create a notification is first of all we create a notification manager instance 
+then we create a notification channel if its sdk is greater than O
+then we create a instance of NotificationCompat.Builder class and set all the properties that are required to 
+make a notification like setcolour,setsmallicon,largeicon,contentTitle,style,vibrate,autocancel and content intent
+etc.
+iin setContentIntent method we have to create a pending intent which can be create by getActivity method
+with the help of explicit intent.
+then we set the priority of the notifiaction using set priority (>jellybean <oreo)
+then we called notify method and notification get pop up.
+
+A foreground service is a service that the user is actively aware of because android requires that service post a
+non dismissble ongoing notification (service the user is actively aware of via a non dismissible ongoing notification)
+real time update of a long running operation and user can do some rudimentary interactions with the service 
+android will prioritize forground service even if the system is memory constrained.
+
+So there are priority set when the memory is limited and we have to free out the resources and they are :
+1.Critical->Active apps or foreground process
+2.High->Visible processes
+3.Medium->Service processes
+4.Low->Background process or empty process
+
+there are three laws of android resouce management:
+1.Android will keep all apps that interact with the user running smoothly
+2.Android will keep all apps with visible activities followed by services running,unless doing so violates the first
+law
+3.Android will keep all apps in the background running unless this violeates the first or second law.
+
+So we have a concept of Jobs in which we can schedule a thing to perform our action like:
+Starts after 15 min.
+Runs only on WIFI
+Runs only when charging
+Wait between retries etc.
+
+So we use JobScheduler :Which allows us to simply grab a reference to a job schedule or object from the context
+create a new job with all the constraints we wanted and then schedule the job whenver we want by calling js.schedule
+We use FirebaseJobDispatcher which is latest version of JobScheduler class and in compatiable with API 9
+
+Google Play Services is app that Google maintains which comes pre-installed on and
+ runs in the background on many, many phones. It is essentially a collection of Services that 
+your app can use to leverage the power of Google products. If the user has the Google Play Services 
+apk installed (and many do) you can use Google Play Services Libraries to easily do things like use the
+ Places API to know where your user is or integrate Google sign in. 
+FirebaseJobDispatcher is one of the many services you can take advantage of via Google Play Services.
+
+Now to add a firebase JobDispatcher :
+1.Add the gradle dependency
+2.Create a new task in our reminder tasks
+3.Create a new service that extend from job service
+4.Add the job service to manifest
+5.Schedule with firebase dispatcher.
+
+Remember that this job is on main thread and its small creating a notification but if it is large like 
+downloading bulk data keep in mind to run on background thread.
+
+when we extend job service there are two method we have to define onStartJob and OnStopJob.
+
+synchronized means we dont want to execute the thing more than once at a time.
+
+Broadcast Receivers:
+System broadcast intent:A special intent sent by the system when events occur on the phone 
+A broadcast receiver is a core android component that enables application receive intents that are broadcast by the
+system or by other application:
+it can be triggerd even when the app is not running 
+Intent filter:Expression that says what intents should trigger your component
+
+there are two ways we can create a b.r. either
+Static or dynamic  :
+Static broadcast reciever are triggered whenver the broadcast intent occurs the receiver will be triggerd even if the
+app is offline 
+Dynamic b.r. are tied to the apps life cycle :its better to create dynamic than static or we can use job scheduling 
+also 
+
+Now how we create this:Static b.r. it involves registering the receiver in the manifest.
+
+App isnt started                    App is started
+1.Use job dispatcher               1.Use a dynamic b.r.    
+if you can(battery friendly)
+2.In some case we
+need static b.r.
+
+Dynamic b.r. are register or unregister in lifecycle methods
+
+How to implemnt:
+Intent filter
+broadcast receiver:
+register it 
+clean it
+
+But remeber is we use dynamic broadcast reciever via activity life cycle it only get updated when app is running
+Our app adds and removes the dynamic broadcast receiver in onResume and onPause. When the app is not visible,
+the plug's image will not update.
+This can lead to the plug sometimes having the incorrect image when the app starts.
+so for that we use eiether battery manager on API 23+
+but <23;Sticky intent
+A sticky intent is a broadcast intent that sticks around, 
+allowing your app to access it at any point and get information from the broadcasted intent.
+
+You don't need a broadcast receiver for a sticky intent, but you use similar looking code to registering a receiver:
+
+IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+Intent batteryStatus = context.registerReceiver(null, ifilter);
+Notice how registerReceiver is used, but instead of passing in a broadcast receiver, null is passed. 
+The intent filter here is the intent filter for the sticky intent Intent.ACTION_BATTERY_CHANGED. 
+The registerReceiver method will return an intent, and it is that intent which has all of the battery
+ information, which you can use:
+
+boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING 
+                               || status == BatteryManager.BATTERY_STATUS_FULL;
+
+
+User Interface:
+If we want to display multiple views together we need a view group A view group is a container for children views
+ and its the base class for all the layout in android.
+Remember nesting to many layouts into one another may affect the overall performance when rendered. 
+
+Contraint layout allow us to create a complex layout without having to nest view groups inside each other
+
+Vector image like svg file are best for android application because they can resize easily to work with any phone
+size and resolution without affecting the quality of your image
+
+Android data binding libary help us link any UI with actual data
+Enable Data Binding in your application
+
+Use <layout> as the root tag for activity_main
+
+Create a data binding instance of type ActivityMainBinding and set the Content View to the activity_main
+
+Load a BoardingPassInfo object with some data
+
+Use the ActivityMainBinding object to set all textViews with the data from BoardingPassInfo
+
+Accessibility refers to the design of products, devices, services, 
+or environments for people who experience disabilities
+
+TalkBack which is a pre-installed screen reader service provided by Google. 
+It uses spoken feedback to describe the results of actions such as launching an app, and events such as notifications.
+Explore by Touch which is a system feature that works with TalkBack, 
+allowing you to touch your device's screen and hear what's under your finger
+ via spoken feedback. This feature is helpful to users with low vision.
+Accessibility settings that let you modify your device's display and sound
+ options, such as increasing the text size, changing the speed at which text is spoken
+
+Localization (also known as Internationalization) is the adaptation of a product or service to meet 
+the needs of a particular language, culture or desired population's "look-and-feel".
+
+ always design your app in a way that can be easily translated to other languages. 
+To do so, any text that you would expect to be translated like labels 
+and titles and button descriptions should all be defined as a string resource in res/values/strings.xml
+
+res/values-fr/strings.xml will contain the french version of the strings.xml file
+ with all the strings translated from the default language to french.
+This way, when a user who has set up their phone to use french as the default language, android 
+will automatically load the 
+french version of strings and use all the pre-translated french labels.
+
+A responsive Ui is simply a UI that reacts to the amount of available space in the screen.
+Note when we turn the application in landscape mode than keep in mind that the design should be responsive and 
+the space should be properly use and utilize.
+
+So we use alteranate layout where we can create an entir new XML layout only for landscape mode and for that 
+we create a folder called layout-land and copy activity_main layout file into it.
+
+So some things are to be common in both layouts so instead of recreating them in both layouts we just seperate them
+into small layout themselves and then we can use android include tag to combine them in default or landscape layout
+
+an include tag is like this->
+  <include
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewBoardingTime"
+                android:id="@+id/boarding_info"
+                layout="@layout/boarding_info"
+      />
+
+Mockup->A model of an app used for design evaluations
+Keylines->lines that specify the size and spacing of app components 
+Material design for android is a set of principles and guides for creating useful and beautiful visuals and 
+interaction accross platforms devices.
+
+We use two colours for our android app first one is primary colour which is the theme of the app than other is
+colour accent which is brighter and to draw user attention with great visibility over primary colour
+like buttons etc.
+
+Font families are groups of fonts that share similar design characteristics like serif or sans-serif 
+its good to use only one font family all over the app and change the colour weight size when we need important
+thing to highlight or hide...
+make sure its is in Scale independent pixles it will stay the same physical size across different resolution screens
+sp.and if the user changes its setting to be bigger font than sp will adjust it acc. and change its size.
+
+A style is an xml resouce file separate from the layouts where you can set all these properties in one place.
+then later we can apply that style to any view we want.
+So android give this way to group properties like the color and size of a view as a style or a theme there we can
+set all of these properties in one place and later we can apply that one style to any view we want.
+And a theme is also created in same way and is just a style thats applied to an entire activity or application 
+not just one view.
+
+This is how we define style attributes:
+ <style name="folderStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+And this is how we can inherit one style to anthor and changes our properties acc.
+ <style name="inboxStyle" parent="folderStyle">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+Responsive design is the act of creating designs that respons to and work well on a variety of screen sizes shapes
+and orientation 
+Android categorize the device screen using two general properties size and pixel density 
+
+Density is the number of pixels in the physical area of the screen and its often measured in dots per inch or "dpi"
+Greator number of smaller pixel allow for a sharper and better image quality and those high density displays.
+
+Density independent pixel or dips(dps) are the same physical size on each device 
+if we only provide one size of image not mdpi,hdpi,xhdpi,xxhdpi... than android scale that image and distort the
+ image. 
+so we have to provide correctly sized images for common density bucket which help us to achieve good graphical
+quality and performance across different devices.
+
+into our res folder we can add qualifers based on anything (using hyphen )from langauge,dialect,device is docked,
+type of touch screen,pixel density of the display,orientation of the screen and also responsive design in particular.
+ 
+And than android load the right layout string drawable accordingly.
+
+Now as we create different layout files for different devices than how it get chooses or there are also that some
+are missing now for that first minimum size of the both ratio eg.1280*800 i.e. now 800 is min. now all the layout
+get apply are for that first which is closest to this and rest of the files apply same for this.
+
+Now one more thing to enhance overall user exp. we have to keep in mind that to use selector and to use this we have
+to create a file with root element selectro in res folder and define the state of each item than 
+ <item android:drawable="@color/colorPrimaryLight" android:state_pressed="true" />
+    <item android:drawable="@color/colorPrimaryLight" android:state_activated="true" />
+    <item android:drawable="@color/colorPrimaryLight" android:state_selected="true" />
+
+this is how we add item in the selector file than to include this to layout file we just have to do this->
+ android:background="@drawable/list_item_selector"
+where list item selector is a selector resource file.
+
+
+Android Software Stack,Activities, Packages,Layouts,Visual Layout Editor,Responsive Design,Layout Managers
+Resources,On Menus,Build URL,Fetching an HTTP Request,Permissions,Threads,AsyncTask,JSON Format,Parse JSON,Networking
+RecyclerView,Items and ViewHolders,findViewByld() Calls,Adapters,Layout Manager,Intents Framework,Passing Data 
+Between Activities,Implicit or Explicit Intents,Parts of URIs,Map Intent,Media Types,Send Data to activity,Android 
+Activity Lifecycle,Lifecycle Events,Persisting Data,Preparing for Termination,AsyncTask and Loaders,Leveraging 
+Loaders,Caching with Loaders,Preference Fragments,Reading From SharedPreferences,Preference Change Listener,
+List or EditText Preference,Preference Summary,Content Providers,Content Provider Permissions,The Content Resolver,
+Uniform Resource Identifier,Structure of the Data,Cursor,Using a CursorLoader,Room,Entity,DAO,Type Converters,
+Threads and Runnables,Executors,Queries with Parameters,LiveData and the Observer Pattern,ViewModel,LifecycleOwners 
+and LifecycleObservers,Services,Services vs. Loaders,Running Services in the Background,Intent Services,
+Notifications,Pending Intents,Notification Actions,Foreground Services,Scheduling Jobs,JobService,
+,Schedule with FirebaseJobDispatcher,Broadcast Receivers,Synchronizing,Views & View Groups,Constraint Layout,
+Adding Shapes and Images,Data Binding,Accessibility & Internationalization,Localization,Landscape Layout,
+Android Design Principles,Visual Mocks and Keylines,Colors and Fonts,Styles and Themes,Screen Density,Touch Selectors
+Tablet Layout,Smallest Width Qualifier
+
+
+
+
+
+
+
+
+FireBase Android Udacity:
+Firebase helps you develop high-quality apps, grow your user base, and earn money. 
+Develop
+Feature	Description
+Cloud Messaging	Firebase Cloud Messaging lets you deliver and receive messages across platforms reliably. Check out the Firebase Cloud Messaging documentation for more details.
+*Authentication	Firebase Authentication is a key feature for protecting the data in your database and storage. Check out authentication in action on Bobon Profiles to help save the brewing profiles of users.
+*Realtime Database	Firebase Realtime Database lets you sync data across all clients in realtime and remains available when your app goes offline. Check out how Skyscanner uses Firebase Realtime Database to keep clients in sync with the database.
+*Storage	Firebase Storage lets you store and serve user-generated content, such as photos or videos. Firebase Storage is backed by Google Cloud Storage, used and trusted by many.
+Hosting	Firebase Hosting provides fast and secure static hosting. Check out Firechat, one of the many web apps hosted with Firebase Hosting.
+Test Lab for Android	Firebase Test Lab lets you test on Android devices hosted in the cloud. Check out the Firebase Test Lab for Android documentation for more details.
+Crash Reporting	Firebase Crash Reporting provides detailed reports of errors and bugs in your app.Check out how Shazam uses Firebase Crash Reporting to find bugs to improve their user experience.
+
+{
+ "rules": {
+   "chat" : {
+     // allows read and write to /chat/<all children>
+     // which includes /chat/messages and /chat/admin_blog
+     ".read": "true",
+     ".write": "true",
+
+
+     "admin_blog" : {
+       // will not negate the ability of the user to write to the blog
+       ".write" : "false"
+     }
+   }
+ }
+}
+Here we have a portion of a Firebase Realtime Database. Inside a section called chat, there are messages in the “messages” path, and and blog entries in the “admin_blog” path. Right now, we want to lock down the blog portion of the database so that nobody can write to it. We wrote rules for chat so that anyone could read or write to it, and then added a specific rule setting “write” to “false” to prevent writing in the “admin_blog”. This rule will not take effect because it is nested inside the “chat” rule that has already set “write” to “true”.
+
+{
+   "rules": {
+      "chat" : {
+         "messages" : {
+            // allows read and write to /chat/messages/<all children>
+             ".read": "true",
+             ".write": "true"
+          },
+         "admin_blog" : {
+            // allows read but not write to /chat/admin_blog/<all children>
+            ".read" : "true",
+            ".write" : "false"
+         }
+      }
+   }
+}
+This is just one example of how the rules could be corrected to get the desired result. Instead of making the read and write rules true from “chat” parent node, which would cause the rule to cascade down all its children, we can make them true for “messages” and all the children of messages, then set separate rules for “admin_blog” and its children. Since neither “messages” nor “admin_blog” has a higher level of permission, their rules are independent of one another and not affected by cascading.
+
+.validate is useful for making sure that the structure or your JSON tree and format of your data matches what you design it to be. For example, validate rules can make sure that every message object contains a "name" and a "text" object and no other data. They can also be used to check that the "name" is a string, and no longer than 100 characters.
+
+".validate": "newData.isString() && newData.val().length() < 100"
+The above example shows a rule where data is only valid if it is a string with a length less than 100.
+
+Unlike .read and .write rules, data must adhere to all validation rules to be allowed.
+
+
+
+
+
+
